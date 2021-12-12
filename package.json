@@ -14,6 +14,7 @@
     "@sveltejs/adapter-static": "^1.0.0-next.21",
     "@sveltejs/kit": "next",
     "autoprefixer": "^10.4.0",
+    "chart.js": "^3.6.2",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-svelte3": "^3.2.1",
@@ -26,6 +27,7 @@
   "dependencies": {
     "@tailwindcss/forms": "^0.4.0",
     "@tailwindcss/typography": "^0.5.0",
-    "chart.js": "^3.6.2"
+    "froalacharts": "^1.0.0",
+    "svelte-froalacharts": "^1.0.0"
   }
 }

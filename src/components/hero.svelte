@@ -6,9 +6,9 @@
         - WHEN we add application development
         -->
         <div class="flex flex-col">
-            <h1 class="lg:text-5xl font-extrabold text-gray-900 tracking-tight">Removing Technical Barriers</h1>
+            <h1 class="lg:text-5xl font-extrabold text-primary-800 tracking-tight">Removing Technical Barriers</h1>
             <h2 class="text-2xl text-gray-700 mt-2">Website Development, SEO, Email, and so much more</h2> 
-            <button type="button" class="w-44 flex justify-center px-6 py-3 mt-8 font-bold rounded-md shadow-md hover:shadow-lg active:shadow-sm text-white bg-gray-800">
+            <button type="button" class="w-44 flex justify-center px-6 py-3 mt-8 font-bold rounded-md shadow-md hover:shadow-lg active:shadow-sm text-white bg-primary-900">
                 <span>Learn More</span>
             </button>
         </div>
@@ -33,9 +33,3 @@
         </div>
     </div>
 </div>
-
-<style lang="postcss">
-    a{
-        color:#333;
-    }
-</style>
