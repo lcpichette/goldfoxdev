@@ -4,6 +4,11 @@
     import About from "../components/about.svelte";
     import Contact from "../components/contact.svelte";
 </script>
+
+<svelte:head>
+    <title>Gold Fox Dev</title>
+</svelte:head>
+
 <!-- Hero -->
 <Hero/>
 

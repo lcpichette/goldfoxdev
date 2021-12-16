@@ -1,53 +1,92 @@
 <script>
+    import { onMount } from "svelte";
     import NavButton from "./nav/navButton.svelte";
+
+    let mobileOpen = false;
+    let mounted = false;
+
+    onMount(()=>{
+        mounted = true;
+    });
+
+    const toggleMobileNav = () => {
+        if(mounted){
+            let mm = document.getElementById("mobile-menu");
+            // If we're opening it (originally closed)
+            if(!mobileOpen){
+                mm.style.overflow = "visible";
+                // TODO: CHANGE TO 180 w/ blog
+                mm.style.height = "150px";
+            } else{
+                // If we're closing it (originally open)
+                mm.style.overflow = "hidden";
+                mm.style.height = "1px";
+            }
+            mobileOpen = !mobileOpen;
+        }
+    }
 </script>
 
 <!-- This example requires Tailwind CSS v2.0+ -->
 <div class="h-16"></div>
-<nav class="bg-primary-900 fixed top-0 w-full z-10">
-    <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+<nav class="bg-primary-900 fixed top-0 w-full z-10 shadow-md shadow-primary-900/50">
+    <div class="max-w-7xl mx-auto px-8">
         <div class="relative flex items-center justify-between h-16">
-        <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
-            <!-- Mobile menu button-->
-            <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
-                <span class="sr-only">Open main menu</span>
+            <!-- Mobile -->
+            <div class="absolute inset-y-0 left-0 flex items-center sm:hidden w-full">
+                <div class="flex relative justify-between place-items-center w-full">
+                    <!-- Mobile menu button-->
+                    <button on:click={()=>{toggleMobileNav()}} type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only">Open main menu</span>
 
-                <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
+                        {#if !mobileOpen}
+                        <svg id="openMobileNavIcon" class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                        {:else}
+                        <svg id="closedMobileNavIcon" class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                        {/if}
+                    </button>
+                    <div class="relative">
+                        <img class="h-6 w-6" src="/img/Gold-Fox-Dev-Icon-Transparent.webp" alt="Gold Fox Dev Icon"/>
+                    </div>
+                </div>
+            </div>
 
-                <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-            </button>
-        </div>
-        <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
-            <div class="flex-shrink-0 flex items-center">
-            <img class="block lg:hidden h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg" alt="Workflow">
-            <img class="hidden lg:block h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-logo-indigo-500-mark-white-text.svg" alt="Workflow">
+            <!-- Desktop -->
+            <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
+                <div class="flex-shrink-0 flex items-center">
+
+                <div class="hidden lg:flex place-items-center">
+                    <img class="h-8 w-auto" src="/img/Gold-Fox-Dev-Logo-White-Transparent.webp" alt="Workflow">
+                </div>
+                
+                </div>
+                <div class="hidden lg:block sm:ml-6">
+                    <div class="flex space-x-4">
+                        <NavButton path="/" title="Home" />
+                        <!--
+                        <NavButton path="/blog" title="Blog" />
+                        -->
+                        <NavButton path="/" section="contact" title="Contact" />
+                        <NavButton path="/pricing" title="Pricing" />
+                    </div>
+                </div>
             </div>
-            <div class="hidden sm:block sm:ml-6">
-            <div class="flex space-x-4">
-                <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                <NavButton path="/" title="Home" />
-                <NavButton path="/" section="contact" title="Contact" ignorePath="true" />
-            </div>
-            </div>
-        </div>
         </div>
     </div>
 
     <!-- Mobile menu, show/hide based on menu state. -->
-    <div class="sm:hidden" id="mobile-menu">
-        <div class="px-2 pt-2 pb-3 space-y-1">
-        <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-        <a href="#" class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium" aria-current="page">Dashboard</a>
-
-        <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Team</a>
-
-        <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Projects</a>
-
-        <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Calendar</a>
+    <div style="height:1px;overflow:hidden;" class="block lg:hidden transition-all ease-in-out duration-300" id="mobile-menu">
+        <div id="mobileNavWrapper" class="relative pt-2 pb-3 space-y-1 flex lg:hidden flex-col px-8 z-10">
+            <NavButton path="/" title="Home" />
+            <!--
+            <NavButton path="/blog" title="Blog" />
+            -->
+            <NavButton path="/" section="contact" title="Contact" />
+            <NavButton path="/pricing" title="Pricing" />
         </div>
     </div>
 </nav>

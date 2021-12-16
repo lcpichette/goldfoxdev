@@ -1,6 +1,8 @@
 <script>
+  /*
   import Chart from 'chart.js/auto';
   import { onMount } from 'svelte';
+  */
 
   let totalSaved = 0.0;
   let sitesEstablished = 0;
@@ -34,7 +36,7 @@
   }
 
   const startDate = "6/21"; // mo/yr
-  const dateDiff = monthDiff(startDate, today);
+  let dateDiff = monthDiff(startDate, today);
 
   let labels = [];
 
@@ -54,17 +56,6 @@
     labels.push(String(intSDSplit[MO] + mI) + '/' + String(intSDSplit[YR] + yI));
   }
   // LABELS ARE NOW PREPARED
- 
-  /*
-  const labels = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-  ];
-  */
 
   // Prepare data
 
@@ -124,8 +115,6 @@
       totalSaved += amtSaved;
     }
   }
-  
-  console.log(totalSaved);
   // ^ TODO ^
   //
 
@@ -143,6 +132,7 @@
     });
   }
 
+  /*
   const config = {
     type: 'line',
     data,
@@ -166,12 +156,13 @@
       chart, config
     )
   })
+  */
 </script>
 
 
 
 
-<div id="about" class="py-16 overflow-hidden">
+<div id="about" class="py-16 overflow-hidden rounded-md shadow-md shadow-gray-300/50 mb-1 border-t border-gray-300/50">
     <div class="max-w-7xl mx-auto px-4 space-y-8 sm:px-6 lg:px-8">
       <div class="text-base max-w-prose mx-auto lg:max-w-none">
         <h2 class="text-base text-secondary font-semibold tracking-wide uppercase">We get it</h2>
@@ -190,7 +181,7 @@
                 <li>We don't construct websites using templates; Your website will always be unique.</li>
             </ul>
             
-            <h3>We’re here to help</h3>
+            <h3 class="text-primary-800">We’re here to help</h3>
             <p>From idea to launch, we work quickly, provide high-quality results, all at an affordable rate.</p>
           </div>
         </div>
@@ -204,14 +195,14 @@
             <rect width="404" height="384" fill="url(#bedc54bc-7371-44a2-a2bc-dc68d819ae60)" />
           </svg>
           <blockquote class="relative bg-white rounded-lg shadow-lg">
-            <div class="rounded-t-lg px-6 py-8 sm:px-10 sm:pt-10 sm:pb-8">
+            <div class="rounded-t-lg px-6 py-24">
                 <!-- Title -->
-                <div class="flex justify-start items-center">
+                <div class="flex justify-start items-center flex-col lg:flex-row">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
                     </svg>
-                    <h3 class="inline pl-4 pb-1 text-xl leading-8 font-semibold tracking-tight text-gray-900">Meet the Developer</h3>
-                    <h4 class="inline italic text-gray-600">... and the cat?</h4>
+                    <h3 class="block lg:inline pl-4 pb-1 text-xl leading-8 font-semibold tracking-tight text-primary-800">Meet the Developer</h3>
+                    <h4 class="block lg:inline italic text-gray-600">... and the cat?</h4>
                 </div>
 
                 <!-- Quote -->
@@ -223,18 +214,19 @@
                 </div>
 
                 <!-- Keanu -->
-                <div class="rounded-full right-10 absolute flex">
-                    <span class="place-self-center pr-4 text-gray-900 font-semibold">Keanu</span>
-                    <img class="w-12 h-12 rounded-full bg-indigo-300" src="/img/keanu_headshot.jpg" alt="">
+                <div class="rounded-full right-10 mt-6 absolute flex">
+                    <span class="place-self-center pr-4 text-primary-800 font-semibold">Keanu</span>
+                    <img class="w-12 h-12 border border-transparent rounded-full bg-secondary" src="/img/keanu_headshot.jpg" alt="">
                 </div>
             </div>
-            <cite class="relative flex items-center sm:items-start bg-secondary rounded-b-lg not-italic py-5 px-6 sm:py-5 sm:pl-12 sm:pr-10 sm:mt-10">
-              <div class="relative rounded-full border-2 border-white sm:absolute sm:top-0 sm:transform sm:-translate-y-1/2">
-                <img class="w-12 h-12 sm:w-20 sm:h-20 rounded-full bg-secondary" src="/img/headshot.jpg" alt="">
+            <cite class="relative flex items-center sm:items-start bg-secondary rounded-b-lg not-italic py-5 px-6">
+              <div class="relative rounded-full border-2 border-white">
+                <img class="w-12 h-12 rounded-full bg-secondary" src="/img/headshot.jpg" alt="">
               </div>
-              <span class="relative ml-4 text-secondary font-semibold leading-6 sm:ml-24 sm:pl-1">
-                <p class="text-white font-semibold inline">Lucas Pichette</p>
-                <p class="inline text-gray-300 font-normal"><span class="px-4 hidden lg:inline">|</span>Developer at Gold Fox Dev</p>
+              <span class="relative flex flex-col text-left ml-6 text-secondary font-semibold">
+                <p class="text-gray-800 font-semibold text-base inline">Lucas Pichette</p>
+                <p class="hidden lg:block text-gray-700 font-normal">Developer at Gold Fox Dev</p>
+                <p class="block lg:hidden text-gray-600 font-normal">Developer</p>
               </span>
             </cite>
           </blockquote>
@@ -245,38 +237,44 @@
     <div class="max-w-7xl px-8 mx-auto pt-6 flex justify-between">
       <!-- Stats section -->
       <div class="mt-10 flex w-full">
+        <!--
         <dl class="grid grid-cols-2 gap-x-4 gap-y-8">
-          <div class="border-t-2 border-gray-100 pt-6">
-          <dt class="text-base font-medium text-gray-500">Founded</dt>
-          <dd class="text-3xl font-extrabold tracking-tight text-gray-900">2021</dd>
-          </div>
+        -->
+        <dl class="grid grid-cols-1 gap-x-4 gap-y-8">
 
           <!--
           <div class="border-t-2 border-gray-100 pt-6">
-          <dt class="text-base font-medium text-gray-500">Employees</dt>
-          <dd class="text-3xl font-extrabold tracking-tight text-gray-900">5</dd>
+          <dt class="text-base font-medium text-gray-500">Founded</dt>
+          <dd class="text-3xl font-extrabold tracking-tight text-primary-800">2021</dd>
           </div>
-          -->
+
+          <div class="border-t-2 border-gray-100 pt-6">
+          <dt class="text-base font-medium text-gray-500">Employees</dt>
+          <dd class="text-3xl font-extrabold tracking-tight text-primary-800">5</dd>
+          </div>
 
           <div class="border-t-2 border-gray-100 pt-6">
           <dt class="text-base font-medium text-gray-500">Sites Established</dt>
-          <dd class="text-3xl font-extrabold tracking-tight text-gray-900">{sitesEstablished}</dd>
+          <dd class="text-3xl font-extrabold tracking-tight text-primary-800">{sitesEstablished}</dd>
           </div>
+          -->
 
-          <div class="border-t-2 border-gray-100 pt-6">
+          <div>
             <dt class="text-base font-medium text-gray-500">Hosting-Related Savings To-Date</dt>
-            <dd class="text-3xl font-extrabold tracking-tight text-gray-900" id="totalSaved">${totalSaved.toFixed(0)}</dd>
+            <dd class="text-3xl font-extrabold tracking-tight text-primary-800" id="totalSaved">${totalSaved.toFixed(0)}</dd>
             <dt class="text-base font-medium text-gray-400 italic">Avg Savings: ${(totalSaved / sitesEstablished / dateDiff).toFixed(2)}/mo</dt>
           </div>
         </dl>
       </div>
 
       <!-- Chart -->
+      <!--TODO:
       <div class="w-full relative">
         <canvas bind:this={chart}>
           <h1>Something went wrong</h1>
         </canvas>
       </div>
+      -->
     </div>
   </div>
   

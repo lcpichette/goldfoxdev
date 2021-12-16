@@ -12,7 +12,7 @@
       <div class="flex-shrink-0 flex justify-center">
         <a href="/" class="inline-flex">
           <span class="sr-only">Workflow</span>
-          <img class="h-12 w-auto" src="https://tailwindui.com/img/logos/workflow-mark.svg?color=indigo&shade=600" alt="">
+          <img class="h-14 w-auto" src="/img/Gold-Fox-Dev-Icon-Transparent.webp" alt="company logo">
         </a>
       </div>
       <div class="py-16">
@@ -21,7 +21,7 @@
           <h1 class="mt-2 text-4xl font-extrabold text-secondary tracking-tight sm:text-5xl">Page not found.</h1>
           <p class="mt-2 text-base text-secondary-700">Sorry, we couldn’t find the page you’re looking for.</p>
           <div class="mt-6">
-            <a href="/" class="text-base font-medium text-primary">Go back home<span aria-hidden="true"> &rarr;</span></a>
+            <a href="/" class="text-base font-medium text-primary underline-fancy text-primary-900">Go back home</a><span aria-hidden="true">&nbsp;&rarr;</span>
           </div>
         </div>
       </div>

@@ -8,16 +8,13 @@
         </div>
         <div class="py-16">
             <div class="text-center">
-                <p class="text-sm font-semibold text-primary uppercase tracking-wide">No Jobs Available</p>
-                  <h1 class="mt-2 text-4xl font-extrabold text-secondary tracking-tight sm:text-5xl">Thank you for your interest!</h1>
-                <p class="mt-2 text-base text-secondary-700">There aren't any job openings for Gold Fox Dev at this moment.</p>
+                <p class="text-sm font-semibold text-primary uppercase tracking-wide">Success!</p>
+                  <h1 class="mt-2 text-4xl font-extrabold text-secondary tracking-tight sm:text-5xl">Your email was successfully sent.</h1>
+                <p class="mt-2 text-base text-secondary-700">We're working as hard as we can to get back to you, your time is valued!</p>
                 <div class="mt-6">
-                   <a href="/" class="underline-fancy font-semibold text-primary-800">Go back home<span aria-hidden="true"> &rarr;</span></a>
+                   <a href="/" class="text-base font-medium text-primary">Go back home<span aria-hidden="true"> &rarr;</span></a>
                 </div>
             </div>
         </div>
     </main>
 </div>
-
-<style>
-</style>
