@@ -13,7 +13,7 @@
     export let postUrl;
 </script>
 
-<div class="flex flex-col rounded-md shadow-lg overflow-hidden hover:shadow-2xl hover:transform hover:-translate-y-[1px] cursor-pointer">
+<div class="post-card flex flex-col rounded-md shadow-lg overflow-hidden hover:shadow-2xl hover:transform hover:-translate-y-[1px] cursor-pointer">
     <div class="flex-shrink-0 border-b-2 border-gray-300">
         <img class="h-48 w-full object-cover" src="{imgUrl}" alt="">
     </div>

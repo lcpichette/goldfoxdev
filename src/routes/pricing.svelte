@@ -88,6 +88,10 @@
     ];
 </script>
 
+<svetle:head>
+  <title>GFD Pricing</title>
+</svetle:head>
+
 <div>
     <div class="bg-primary-700">
         <div class="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8 lg:flex lg:justify-between">

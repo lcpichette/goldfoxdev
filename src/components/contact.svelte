@@ -14,7 +14,7 @@
   }
   ```
 -->
-<div id="contact" class="bg-gray-50 py-16 px-4 overflow-hidden sm:px-6 lg:px-8 lg:py-24">
+<div id="contact" class="relative bg-gray-50 py-16 px-4 overflow-hidden sm:px-6 lg:px-8 lg:py-24 -z-10">
     <div class="relative max-w-xl mx-auto">
       <svg class="absolute left-full transform translate-x-1/2" width="404" height="404" fill="none" viewBox="0 0 404 404" aria-hidden="true">
         <defs>
@@ -37,7 +37,7 @@
           Contact Us
         </h2>
         <p class="mt-4 text-lg leading-6 text-gray-500">
-          Want to <span class="text-secondary">learn more</span>, or <span class="text-secondary">get started</span>? Shoot a quick email our way by filling out this form. 
+          Want to <span class="text-primary-800 underline-fancy-static-small">learn more</span>, or <span class="text-primary-800 underline-fancy-static-small">get started</span>? Shoot a quick email our way by filling out this form. 
         </p>
       </div>
       <div class="mt-12">

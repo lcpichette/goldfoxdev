@@ -15,8 +15,7 @@
             // If we're opening it (originally closed)
             if(!mobileOpen){
                 mm.style.overflow = "visible";
-                // TODO: CHANGE TO 180 w/ blog
-                mm.style.height = "150px";
+                mm.style.height = "180px";
             } else{
                 // If we're closing it (originally open)
                 mm.style.overflow = "hidden";
@@ -28,10 +27,10 @@
 </script>
 
 <!-- This example requires Tailwind CSS v2.0+ -->
-<div class="h-16"></div>
+<div class="h-[4.5rem]"></div>
 <nav class="bg-primary-900 fixed top-0 w-full z-10 shadow-md shadow-primary-900/50">
     <div class="max-w-7xl mx-auto px-8">
-        <div class="relative flex items-center justify-between h-16">
+        <div class="relative flex items-center justify-between h-[4.5rem]">
             <!-- Mobile -->
             <div class="absolute inset-y-0 left-0 flex items-center sm:hidden w-full">
                 <div class="flex relative justify-between place-items-center w-full">
@@ -67,9 +66,7 @@
                 <div class="hidden lg:block sm:ml-6">
                     <div class="flex space-x-4">
                         <NavButton path="/" title="Home" />
-                        <!--
                         <NavButton path="/blog" title="Blog" />
-                        -->
                         <NavButton path="/" section="contact" title="Contact" />
                         <NavButton path="/pricing" title="Pricing" />
                     </div>
@@ -82,9 +79,7 @@
     <div style="height:1px;overflow:hidden;" class="block lg:hidden transition-all ease-in-out duration-300" id="mobile-menu">
         <div id="mobileNavWrapper" class="relative pt-2 pb-3 space-y-1 flex lg:hidden flex-col px-8 z-10">
             <NavButton path="/" title="Home" />
-            <!--
             <NavButton path="/blog" title="Blog" />
-            -->
             <NavButton path="/" section="contact" title="Contact" />
             <NavButton path="/pricing" title="Pricing" />
         </div>

@@ -47,6 +47,7 @@
 <script>
 	import { onMount } from 'svelte';
 	import { page } from "$app/stores";
+	import '../../global.css';
 	export let post;
 	//let post = null;
 	
@@ -84,6 +85,7 @@
 			</span>
 		</div>
 	</div>
+	<h2>Test</h2>
 	<div id="post-content"></div>
 </div>
 {/if}
@@ -124,25 +126,6 @@ circle {
   100% {
     stroke-dashoffset: -125px;
   }
-}
-
-h1, h2, h3, h4, h5, h6{
-	@apply text-primary-800;
-}
-h1{
-	@apply text-3xl;
-}
-h2{
-	@apply text-2xl;
-}
-h3{
-	@apply text-xl;
-}
-h4{
-	@apply text-lg;
-}
-p, span, a{
-	@apply text-gray-900;
 }
 
 </style>

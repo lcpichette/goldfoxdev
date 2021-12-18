@@ -160,12 +160,15 @@
 </script>
 
 
+<svetle:head>
+  <title>GFD About</title>
+</svetle:head>
 
 
-<div id="about" class="py-16 overflow-hidden rounded-md shadow-md shadow-gray-300/50 mb-1 border-t border-gray-300/50">
+<div id="about" class="py-16 overflow-hidden rounded-md shadow-md shadow-gray-300/50 border-t border-gray-300/50">
     <div class="max-w-7xl mx-auto px-4 space-y-8 sm:px-6 lg:px-8">
       <div class="text-base max-w-prose mx-auto lg:max-w-none">
-        <h2 class="text-base text-secondary font-semibold tracking-wide uppercase">We get it</h2>
+        <h2 class="text-base text-primary-700 font-semibold tracking-wide uppercase underline-fancy-static-small w-20">We get it</h2>
         <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-primary-800 sm:text-4xl">What makes us different</p>
       </div>
       <div class="relative z-1 text-base max-w-prose mx-auto lg:max-w-5xl lg:mx-0 lg:pr-72">
@@ -260,9 +263,9 @@
           -->
 
           <div>
-            <dt class="text-base font-medium text-gray-500">Hosting-Related Savings To-Date</dt>
+            <dt class="text-base font-medium text-gray-600">Hosting-Related Savings To-Date</dt>
             <dd class="text-3xl font-extrabold tracking-tight text-primary-800" id="totalSaved">${totalSaved.toFixed(0)}</dd>
-            <dt class="text-base font-medium text-gray-400 italic">Avg Savings: ${(totalSaved / sitesEstablished / dateDiff).toFixed(2)}/mo</dt>
+            <dt class="text-base font-medium text-gray-500 italic">Avg Savings: ${(totalSaved / sitesEstablished / dateDiff).toFixed(2)}/mo</dt>
           </div>
         </dl>
       </div>

@@ -37,7 +37,7 @@ module.exports = {
           800: '#303444',
           900: '#272b38',
         },
-        secondary: '#ffb803'
+        secondary: '#ffb806'
       }
     }
   }

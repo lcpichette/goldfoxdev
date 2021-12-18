@@ -23,9 +23,6 @@
         scroll-behavior: smooth;
     }
 
-    :global(h1, h2, h3){
-        @apply text-primary-800;
-    }
     :global(.underline-fancy) {
         position: relative;
     }
@@ -47,6 +44,33 @@
     :global(.underline-fancy:hover::before) {
         transform-origin: bottom left;
         transform: scaleX(1);
+    }
+
+    :global(.underline-fancy-static) {
+        position: relative;
+    }
+    :global(.underline-fancy-static::before) {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        @apply text-primary-800;
+        @apply bg-secondary;
+    }
+    :global(.underline-fancy-static-small) {
+        position: relative;
+    }
+    :global(.underline-fancy-static-small::before) {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        @apply text-primary-800;
+        @apply bg-secondary;
     }
 
     :global(a.button){
