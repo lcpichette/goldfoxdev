@@ -14,7 +14,7 @@
   }
   ```
 -->
-<div id="contact" class="relative bg-gray-50 py-16 px-4 overflow-hidden sm:px-6 lg:px-8 lg:py-24 -z-10">
+<div id="contact" class="relative bg-gray-50 py-16 px-4 overflow-hidden sm:px-6 lg:px-8 lg:py-24 z-10">
     <div class="relative max-w-xl mx-auto">
       <svg class="absolute left-full transform translate-x-1/2" width="404" height="404" fill="none" viewBox="0 0 404 404" aria-hidden="true">
         <defs>
@@ -166,3 +166,8 @@
     </div>
   </div>
   
+  <style lang="postcss">
+    input{
+      @apply z-10;
+    }
+  </style>

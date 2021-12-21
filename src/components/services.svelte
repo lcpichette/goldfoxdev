@@ -1,9 +1,9 @@
 <!-- This example requires Tailwind CSS v2.0+ -->
-<div id="services" class="relative bg-gray-50 py-16 sm:py-24 lg:py-32 -z-10">
+<div id="services" class="relative bg-gray-50 py-16 sm:py-24 lg:py-32 z-10">
     <div class="mx-auto max-w-md px-4 text-center sm:max-w-3xl sm:px-6 lg:px-8 lg:max-w-7xl">
-      <h2 class="text-base font-semibold tracking-wider text-primary-700 underline-fancy-static-small w-48 mx-auto uppercase">Less to worry about</h2>
+      <h2 class="text-base font-semibold tracking-wider text-primary-700 underline-fancy-static-small mx-auto uppercase">Less to worry about</h2>
       <p class="mt-2 text-3xl font-extrabold text-primary-800 tracking-tight sm:text-4xl">
-        Everything you need to deploy your <span class="mark text-primary-800 underline-fancy-static">website</span>
+        Everything you need to create your <span class="mark text-primary-800 underline-fancy-static">website</span>
       </p>
       <p class="mt-5 max-w-prose mx-auto text-xl text-gray-500">
         Let us geeks handle the boring tech-stuff, while you focus on what's important.

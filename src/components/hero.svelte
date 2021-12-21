@@ -2,9 +2,9 @@
 </script>
 
 <!-- Should visually and verbally describe (and sell) what we do. -->
-<div class="px-6 lg:px-8 mx-auto h-[55vh] lg:h-[65vh] flex flex-col lg:flex-row lg:justify-between shadow-md shadow-gray-300/50 border">
+<div class="px-6 lg:px-8 mx-auto h-[55vh] lg:h-[65vh] flex flex-col lg:flex-row lg:justify-between shadow-md shadow-gray-300/50 border relative z-20">
     <!-- Quote and Call-to-Action -->
-    <div class="w-1/2 self-center flex justify-center">
+    <div class="w-auto self-center flex justify-center pt-6 lg:pt-0">
         <!-- CHANGE TO: Eliminating Technical Barriers 
         - WHEN we add application development
         -->
@@ -19,7 +19,7 @@
     </div>
 
     <!-- Mocks to the right -->
-    <div class="w-1/2">
+    <div class="w-1/2 hidden lg:inline-block">
         <!--
         <div class="h-5/6 bg-[url('/img/Scene.png')] bg-center bg-contain bg-no-repeat"></div>
         -->
