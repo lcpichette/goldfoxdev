@@ -62,6 +62,12 @@
     $: subscriptionPrice = sum(selectedServices.map((service) => ((parseFloat(service.price) * conversions.data[currency]) / 12)));
 
     let services = [{
+            "service": "Visual Mock/Design",
+            "description": 'Ask us what your company\'s website or app would look like if we were to make it, and we\'ll provide a free visual mock showing you.',
+            "price": 0,
+            "selected": false,
+        },
+        {
             "service": "Front End Development",
             "description": 'Establishing "looks"/aesthetic of website',
             "price": 1500,
@@ -84,7 +90,51 @@
             "description": 'Add analytics tools that enable you to see information like: Visitor device type, age-range, page visits, and more.',
             "price": 200,
             "selected": false,
-        }
+        },
+        {
+            "service": "Logo + Emblem/Icon Creation",
+            "description": "We'll create your company's logo and emblem/icon!",
+            "price": 400,
+            "selected": false,
+        },
+        {
+            "service": "Style Guide",
+            "description": "Don't have a style guide for your company yet? We can create one for you!",
+            "price": 200,
+            "selected": false,
+        },
+        {
+            "service": "Email",
+            "description": "Want HIPPA and FERPA compliant email(s) created for you, using your company's name? Price is for first email, subsequent emails only cost $50 each.",
+            "price": 350,
+            "selected": false,
+        },
+        {
+            "service": "App Creation",
+            "description": "We'll create your app, and it will work on all platforms. App Icon comes free with this.",
+            "price": 9750,
+            "selected": false,
+        },
+    ];
+
+    let packages = [{
+            "service": "Standard Website",
+            "description": "We'll design, create, and host your website. Services included: Visual Mock/Design, Front End Development, and Hosting.",
+            "price": 3500,
+            "selected": false,
+        },
+        {
+            "service": "Feature-packed Website",
+            "description": 'Everything one of our standard websites would provide... plus some more awesome features. Services include: Visual Mock/Design, Front End Development, Hosting, CMS, and Data Analytics.',
+            "price": 4700,
+            "selected": false,
+        },
+        {
+            "service": "Cross-Platform App",
+            "description": "We'll create your app, and the logo for it! Cross-platform, meaning one code-base that works on every platform (Android, MacOS, etc)",
+            "price": 9750,
+            "selected": false,
+        },
     ];
 </script>
 
@@ -124,12 +174,40 @@
     </div>
     
     <div class="flex flex-col max-w-7xl mx-auto w-full mt-12">
-        <div class="max-w-7xl mx-auto w-full">
+        <div class="w-full">
             <div class="py-2 align-middle w-[90%] lg:min-w-full lg:px-8 block mx-auto">
-                <h2 class="text-primary-800 text-xl pb-4">Pricing</h2>
+                <p class="italic pb-4 text-sm text-primary-500">Prices based on USD, conversions to other currencies may have innacuracies.</p>
 
+                <h2 class="text-primary-800 text-xl pb-4">Aren't Sure What to Pick?</h2>
+                <p class="text-primary-800">Here are some common combinations/packages. We'll also help keep you informed, please <a class="underline-fancy italic text-primary-600" href="/#contact">contact us</a> with any questions!</p>
+
+                <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg mt-4">
+                    <table class="divide-y divide-gray-200 border-collapse w-full">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Service
+                                </th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Description
+                                </th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Price
+                                </th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="service-row-pricing">
+                            {#each packages as p}
+                            <ServiceRow service={p.service} description={p.description} price={p.price} currencySymbol={currencySymbol} />
+                            {/each}
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2 class="text-primary-800 text-xl pb-4 pt-16">Pricing</h2>
                 <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-                    <table class="divide-y divide-gray-200 border-collapse">
+                    <table class="divide-y divide-gray-200 border-collapse w-full">
                         <thead class="bg-gray-50">
                             <tr>
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -147,7 +225,7 @@
                             </tr>
                         </thead>
 
-                        <tbody>
+                        <tbody id="service-row-pricing">
                             {#each services as s}
                             <ServiceRow service={s.service} description={s.description} price={s.price} currencySymbol={currencySymbol} bind:selected={s.selected} />
                             {/each}
@@ -243,6 +321,7 @@
         transform-origin: center left;
         transition: transform 0.2s ease-in-out;
     }
+
     /*
     .higlight:hover::before {
         transform: scaleX(1);

@@ -119,4 +119,9 @@
         @apply shadow-sm;
         @apply shadow-secondary/50;
     }
+
+    :global(::selection) {
+        background-color: #ffb806;
+        color: #272b38;
+    }
 </style>

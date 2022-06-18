@@ -6,7 +6,7 @@
 
 <!-- This example requires Tailwind CSS v2.0+ -->
 <div class="flex flex-col max-w-7xl mx-auto w-full mt-12">
-<div class="bg-gray-50 mt-10">
+<div class="mt-10">
     <div class="pt-12 px-4 sm:px-6 lg:px-8 lg:pt-20">
       <div class="text-center">
         <h2 class="text-lg leading-6 font-semibold text-secondary uppercase tracking-wider">
@@ -23,7 +23,7 @@
   
     <div class="mt-16 bg-white pb-12 lg:mt-20 lg:pb-20">
       <div class="relative z-0">
-        <div class="absolute inset-0 h-5/6 bg-gray-50 lg:h-2/3"></div>
+        <div class="absolute inset-0 h-5/6 lg:h-2/3"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div class="relative lg:grid lg:grid-cols-7">
 

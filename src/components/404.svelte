@@ -11,7 +11,7 @@
     <main class="flex-grow flex flex-col justify-center max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex-shrink-0 flex justify-center">
         <a href="/" class="inline-flex">
-          <span class="sr-only">Workflow</span>
+          <span class="sr-only">Gold Fox Dev</span>
           <img class="h-14 w-auto" src="/img/Gold-Fox-Dev-Icon-Transparent.webp" alt="company logo">
         </a>
       </div>

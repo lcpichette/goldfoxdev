@@ -7,7 +7,7 @@
     export let selected;
 </script>
 
-<tr class="p-3">
+<tr class="p-3 bg-white relative z-20">
     <td class="px-2 lg:px-6 py-4 text-sm font-medium text-gray-900">
         {service}
     </td>
@@ -19,12 +19,15 @@
             {price}
         </span>
     </td>
+    {#if selected != null}
     <td class="hidden lg:inline-block px-0 lg:px-6 py-4 text-right text-sm font-medium">
         <div class="flex justify-center h-5">
             <input bind:checked={selected} type="checkbox" class="focus:ring-secondary h-4 w-4 text-secondary border-gray-300 rounded">
         </div>
     </td>
+    {/if}
 </tr>
+{#if selected != null}
 <tr class="border-gray-200 border-b table-row lg:hidden">
     <td colspan="4">
         <div class="flex justify-center">
@@ -32,3 +35,4 @@
         </div>
     </td>
 </tr>
+{/if}

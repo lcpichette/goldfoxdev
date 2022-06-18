@@ -12,6 +12,11 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        'garamond': ['garamond','serif'],
+        'fatface': ['fatface','display'],
+        'nautigal': ['nautigal','script'],
+      },
       colors: {
         /*
         primary: {

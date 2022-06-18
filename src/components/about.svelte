@@ -165,7 +165,7 @@
 </svetle:head>
 
 
-<div id="about" class="py-16 overflow-hidden rounded-md shadow-md shadow-gray-300/50 border-t border-gray-300/50">
+<div id="about" class="py-16 overflow-hidden rounded-md shadow-md shadow-gray-300/50 border-t border-gray-300/50 z-20 relative">
     <div class="max-w-7xl mx-auto px-4 space-y-8 sm:px-6 lg:px-8">
       <div class="text-base max-w-prose mx-auto lg:max-w-none">
         <h2 class="text-base text-primary-700 font-semibold tracking-wide uppercase underline-fancy-static-small w-20">We get it</h2>

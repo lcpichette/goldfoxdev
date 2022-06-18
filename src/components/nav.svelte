@@ -14,7 +14,7 @@
             let mm = document.getElementById("mobile-menu");
             // If we're opening it (originally closed)
             if(!mobileOpen){
-                mm.style.overflow = "visible";
+                mm.style.overflow = "none";
                 mm.style.height = "180px";
             } else{
                 // If we're closing it (originally open)
@@ -28,7 +28,7 @@
 
 <!-- This example requires Tailwind CSS v2.0+ -->
 <div class="h-[4.5rem]"></div>
-<nav class="bg-primary-900 fixed top-0 w-full z-10 shadow-md shadow-primary-900/50">
+<nav class="bg-primary-900 fixed top-0 w-full z-50 shadow-md shadow-primary-900/50">
     <div class="max-w-7xl mx-auto px-8">
         <div class="relative flex items-center justify-between h-[4.5rem]">
             <!-- Mobile -->

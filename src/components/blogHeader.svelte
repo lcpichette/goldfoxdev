@@ -1,6 +1,6 @@
 
 <!-- This example requires Tailwind CSS v2.0+ -->
-<div class="bg-white shadow-md shadow-gray-300/50 border border-t border-gray-300/50">
+<div class="bg-white shadow-md shadow-gray-300/50 border border-t border-gray-300/50 z-20 relative">
     <div class="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
         <div class="text-center">
             <h2 class="text-base font-semibold text-primary-800 underline-fancy-static-small w-12 mx-auto tracking-wide uppercase">Blog</h2>
