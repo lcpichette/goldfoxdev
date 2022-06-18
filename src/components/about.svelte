@@ -168,7 +168,7 @@
 <div id="about" class="py-16 overflow-hidden rounded-md shadow-md shadow-gray-300/50 border-t border-gray-300/50 z-20 relative">
     <div class="max-w-7xl mx-auto px-4 space-y-8 sm:px-6 lg:px-8">
       <div class="text-base max-w-prose mx-auto lg:max-w-none">
-        <h2 class="text-base text-primary-700 font-semibold tracking-wide uppercase underline-fancy-static-small w-20">We get it</h2>
+        <h2 class="text-base text-primary-700 font-semibold tracking-wide uppercase underline-fancy-static-small">We get it</h2>
         <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-primary-800 sm:text-4xl">What makes us different</p>
       </div>
       <div class="relative z-1 text-base max-w-prose mx-auto lg:max-w-5xl lg:mx-0 lg:pr-72">

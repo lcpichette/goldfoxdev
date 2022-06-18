@@ -59,16 +59,23 @@
                 <div class="flex-shrink-0 flex items-center">
 
                 <div class="hidden lg:flex place-items-center">
-                    <img class="h-8 w-auto" src="/img/Gold-Fox-Dev-Logo-White-Transparent.webp" alt="Workflow">
+                    <img class="h-8 w-auto text-white" src="/img/Gold-Fox-Dev-Logo-White-Transparent.webp" alt="Gold Fox Dev">
                 </div>
                 
                 </div>
                 <div class="hidden lg:block sm:ml-6">
                     <div class="flex space-x-4">
                         <NavButton path="/" title="Home" />
+                        <!--TODO
                         <NavButton path="/blog" title="Blog" />
+                        -->
                         <NavButton path="/" section="contact" title="Contact" />
                         <NavButton path="/pricing" title="Pricing" />
+                        <div>
+                            <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+                            <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+                            <script type="text/javascript">window.onload = function() { Calendly.initBadgeWidget({ url: 'https://calendly.com/goldfoxdev/consultation-meeting', text: 'Let\'s Get Started', color: '#ffb806', textColor: '#272b38', branding: false }); }</script>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -79,7 +86,9 @@
     <div style="height:1px;overflow:hidden;" class="block lg:hidden transition-all ease-in-out duration-300" id="mobile-menu">
         <div id="mobileNavWrapper" class="relative pt-2 pb-3 space-y-1 flex lg:hidden flex-col px-8 z-10">
             <NavButton path="/" title="Home" />
+            <!--TODO
             <NavButton path="/blog" title="Blog" />
+            -->
             <NavButton path="/" section="contact" title="Contact" />
             <NavButton path="/pricing" title="Pricing" />
         </div>

@@ -5,7 +5,7 @@
                 <span class="sr-only">Gold Fox Dev</span>
                 <img class="h-14 w-auto" src="/img/Gold-Fox-Dev-Icon-Transparent.webp" alt="company logo">
             </a>
-        </div>
+          </div>
         <div class="py-16">
             <div class="text-center">
                 <p class="text-sm font-semibold text-primary uppercase tracking-wide">Success!</p>

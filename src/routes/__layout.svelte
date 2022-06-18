@@ -60,17 +60,7 @@
         @apply bg-secondary;
     }
     :global(.underline-fancy-static-small) {
-        position: relative;
-    }
-    :global(.underline-fancy-static-small::before) {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        height: 1px;
-        @apply text-primary-800;
-        @apply bg-secondary;
+        @apply underline decoration-secondary;
     }
 
     :global(a.button){

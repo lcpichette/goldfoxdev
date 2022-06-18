@@ -150,3 +150,8 @@
     </div>
   </div>
   
+  <style lang="postcss">
+    input{
+      @apply z-10;
+    }
+  </style>

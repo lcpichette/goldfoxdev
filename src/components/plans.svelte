@@ -112,7 +112,6 @@
             <!-- Traditional -->
             <div class="mt-10 mx-auto max-w-md lg:m-0 lg:max-w-none lg:col-start-6 lg:col-end-8 lg:row-start-2 lg:row-end-3">
               <div class="h-full flex flex-col rounded-lg shadow-lg overflow-hidden lg:rounded-none lg:rounded-r-lg">
-                <div class="flex-1 flex flex-col">
                   <div class="bg-white px-6 py-10">
                     <div>
                       <h3 class="text-center text-2xl font-medium text-primary-800" id="tier-scale">
@@ -130,7 +129,7 @@
                       </div>
                     </div>
                   </div>
-                  <div class="justify-between border-t-2 border-gray-100 p-6 bg-gray-50">
+                  <div class="flex flex-col justify-between border-t-2 border-gray-100 p-6 bg-gray-50 h-full">
                     <p class="text-gray-700 text-sm">Yours forever. Pay half upfront, and half when development is completed.</p>
                     <div class="mt-6">
                       <div class="rounded-lg shadow-md">
@@ -140,7 +139,6 @@
                       </div>
                     </div>
                   </div>
-                </div>
               </div>
             </div>
 

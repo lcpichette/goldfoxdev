@@ -18,19 +18,6 @@ module.exports = {
         'nautigal': ['nautigal','script'],
       },
       colors: {
-        /*
-        primary: {
-          100: '#b4c9f4',
-          200: '#80a4ec',
-          300: '#5081e5',
-          400: '#1f5bd5',
-          500: '#1949ab',
-          600: '#133883',
-          700: '#0F2C67',
-          800: '#0b204a',
-          900: '#091a3c',
-        },
-        */
         primary: {
           100: '#b9bdce',
           200: '#a3a9be',
