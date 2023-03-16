@@ -3,20 +3,23 @@
     import Plans from "../components/plans.svelte";
     import ServiceRow from "../components/serviceRow.svelte";
 
+    let conversionAvailable = false;
     let currency = "USD";
     let currencySymbol = "$";
+    //
+
 
     let conversions = {
         lastUpdated: "12/12/21",
         data: {
             "USD": 1, // base currency
-            "ARS": 101.5,
-            "AUD": 1.39,
-            "CAD": 1.27,
-            "EUR": 0.88,
-            "JPY": 113.39,
-            "CHF": 0.92,
-            "GBP": 0.75
+            "ARS": undefined,
+            "AUD": undefined,
+            "CAD": undefined,
+            "EUR": undefined,
+            "JPY": undefined,
+            "CHF": undefined,
+            "GBP": undefined,
         },
         symbols: {
             "USD": "$", // base currency
@@ -26,7 +29,7 @@
             "EUR": "€",
             "JPY": "¥",
             "CHF": "CHF",
-            "GBP": "£"
+            "GBP": "£",
         }
     }
 
@@ -35,7 +38,35 @@
 
     onMount(() => {
         options = document.getElementById("currency").querySelectorAll("option");
+        for (const [i, tag] of Object.keys(conversions.symbols).entries()) {
+            loadPrice(tag, 1)
+                .then((conversionData) => {
+                    conversions.data[tag] = conversionData.new_amount;
+                })
+                .catch(err => console.error(err));
+        }
     })
+
+    async function loadPrice(tag, amount) {
+        const url = `https://currency-converter-by-api-ninjas.p.rapidapi.com/v1/convertcurrency?have=USD&want=${tag}&amount=${amount}`;
+        const options = {
+          method: 'GET',
+          headers: {
+            'X-RapidAPI-Key': '706136ec32msh717478ab5e5c67ap188ccdjsn427bf120f53b',
+            'X-RapidAPI-Host': 'currency-converter-by-api-ninjas.p.rapidapi.com'
+          },
+        };
+
+        let data;
+        await fetch(url, options)
+            .then(res => {
+                data = res.json();
+                return data;
+            })
+            .catch(err => console.error('error:' + err));
+
+        return await data;
+    }
 
     function updateCurrency() {
         for(const o of options){
@@ -49,7 +80,7 @@
         prices = document.querySelectorAll(".price");
         for(const price of prices){
             console.log(price.dataset.usdprice);
-            price.innerText = parseFloat(price.dataset.usdprice) * conversions.data[currency];
+            price.innerText = Math.round(parseFloat(price.dataset.usdprice) * conversions.data[currency]);
         }
 
         currencySymbol = conversions.symbols[currency];
