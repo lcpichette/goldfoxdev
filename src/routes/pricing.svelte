@@ -328,9 +328,9 @@
                         <tbody id="service-row-pricing">
                             {#each services as s}
                             {#if s.per === 'Whole'}
-                            <ServiceRow service={s.service} description={s.description} price={s.price} currencySymbol={currencySymbol} bind:selected={s.selected} />
+                            <ServiceRow discount={discount} service={s.service} description={s.description} price={s.price} currencySymbol={currencySymbol} bind:selected={s.selected} />
                             {:else}
-                            <ServiceRow service={s.service} description={s.description} price={s.price} currencySymbol={currencySymbol} bind:amount={s.amount} />
+                            <ServiceRow discount={discount} service={s.service} description={s.description} price={s.price} currencySymbol={currencySymbol} bind:amount={s.amount} />
                             {/if}
                             {/each}
                         </tbody>
@@ -358,7 +358,7 @@
     {/if}
 
     {#if paymentPlanInfoLoaded && selectedServices.length >= 1}
-    <Plans currencySymbol={currencySymbol} totalPrice={totalPrice} feePerMonth={feePerMonth} paymentPlanMonths={paymentPlanMonths} subscriptionDivisor={subscriptionDivisor}/>
+    <Plans discount={discount} currencySymbol={currencySymbol} totalPrice={totalPrice} feePerMonth={feePerMonth} paymentPlanMonths={paymentPlanMonths} subscriptionDivisor={subscriptionDivisor}/>
     {:else}
     <p class="text-primary-800 text-2xl my-32 text-center">Select Service(s) to See Payment Options</p>
     {/if}

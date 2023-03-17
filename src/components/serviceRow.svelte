@@ -2,11 +2,21 @@
     export let service;
     export let description;
     export let price;
+    export let discount = 0;
 
     export let price_type = 'price';
     export let currencySymbol = undefined;
     export let selected = undefined;
     export let amount = undefined;
+
+    const displayPrice = `
+        ${price_type === 'price' ? currencySymbol : ''}
+        ${price_type === 'price' ? Math.floor(price) : price * 100}
+    `;
+    const discountedDisplayPrice = `
+        ${price_type === 'price' ? currencySymbol : ''}
+        ${price_type === 'price' ? Math.floor(price * (1 - discount)) : price * 100}
+    `;
 </script>
 
 <tr class="p-3 bg-white relative z-20">
@@ -17,16 +27,18 @@
         {description}
     </td>
     <td class="px-2 lg:px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
-        {#if price_type === 'price'}
-        <span class="symbol">{currencySymbol}</span>
-        {/if}
-        <span class="price" data-usdprice="{price}">
-            {
-                price_type === 'price'
-                    ? price
-                    : price * 100
-            }
+        {#if discount}
+        <span class="price line-through" data-usdprice="{price}">
+            {displayPrice}
         </span>
+        <span class="price font-bold" data-usdprice="{price}">
+            {discountedDisplayPrice}
+        </span>
+        {:else}
+        <span class="price" data-usdprice="{price}">
+            {displayPrice}
+        </span>
+        {/if}
         {#if price_type === 'discount'}
         <span>%</span>
         {/if}

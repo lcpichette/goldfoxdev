@@ -4,6 +4,7 @@
     export let paymentPlanMonths;
     export let feePerMonth;
     export let subscriptionDivisor;
+    export let discount = 0;
 
     $: subscriptionPrice = totalPrice / subscriptionDivisor;
 </script>
@@ -40,13 +41,29 @@
                             <h3 class="text-center text-2xl font-medium text-primary-800" id="tier-hobby">
                                 Subscription
                             </h3>
+
+                            {#if discount}
+                            <div class="strikethrough mt-4 flex items-center justify-center relative">
+                                <span class="px-3 flex items-start text-xl tracking-tight text-primary-500">
+                                <span class="text-lg font-medium">
+                                    {currencySymbol}
+                                </span>
+                                <span class="font-extrabold -mr-[9px]" data-usdprice={subscriptionPrice.toFixed(0)}>
+                                    {subscriptionPrice.toFixed(0)}
+                                </span>
+                                </span>
+                                <span class="text-md font-medium text-gray-500">
+                                /month
+                                </span>
+                            </div>
+                            {/if}
                             <div class="mt-4 flex items-center justify-center">
                                 <span class="px-3 flex items-start text-6xl tracking-tight text-primary-800">
                                 <span class="mt-2 mr-2 text-4xl font-medium">
                                     {currencySymbol}
                                 </span>
-                                <span class="font-extrabold" data-usdprice={subscriptionPrice.toFixed(0)}>
-                                    {subscriptionPrice.toFixed(0)}
+                                <span class="font-extrabold" data-usdprice={Math.floor(subscriptionPrice * (1 - discount))}>
+                                    {Math.floor(subscriptionPrice * (1 - discount))}
                                 </span>
                                 </span>
                                 <span class="text-xl font-medium text-gray-500">
@@ -85,13 +102,28 @@
                     <h3 class="text-center text-3xl font-semibold text-primary-800 sm:-mx-6" id="tier-growth">
                       Payment Plan
                     </h3>
+                    {#if discount}
+                    <div class="strikethrough mt-4 flex items-center justify-center relative">
+                        <span class="px-3 flex items-start text-xl tracking-tight text-primary-500">
+                        <span class="text-lg font-medium">
+                            {currencySymbol}
+                        </span>
+                        <span class="font-extrabold -mr-[9px]" data-usdprice={((totalPrice / paymentPlanMonths) + feePerMonth).toFixed(0)}>
+                            {((totalPrice / paymentPlanMonths) + feePerMonth).toFixed(0)}
+                        </span>
+                        </span>
+                        <span class="text-md font-medium text-gray-500">
+                        /month
+                        </span>
+                    </div>
+                    {/if}
                     <div class="mt-4 flex items-center justify-center">
                       <span class="px-3 flex items-start text-6xl tracking-tight text-primary-800 sm:text-6xl">
                         <span class="mt-2 mr-2 text-4xl font-medium">
                             {currencySymbol}
                         </span>
-                        <span class="font-extrabold" data-usdprice={((totalPrice / paymentPlanMonths) + feePerMonth).toFixed(0)}>
-                            {((totalPrice / paymentPlanMonths) + feePerMonth).toFixed(0)}
+                        <span class="font-extrabold" data-usdprice={Math.floor(((totalPrice / paymentPlanMonths) + feePerMonth) * (1 - discount))}>
+                            {Math.floor(((totalPrice / paymentPlanMonths) + feePerMonth) * (1 - discount))}
                         </span>
                       </span>
                       <span class="text-2xl font-medium text-gray-500">
@@ -121,15 +153,33 @@
                       <h3 class="text-center text-2xl font-medium text-primary-800" id="tier-scale">
                         Traditional
                       </h3>
+                        {#if discount}
+                        <div class="strikethrough mt-4 flex items-center justify-center relative">
+                            <span class="px-3 flex items-start text-xl tracking-tight text-primary-500">
+                            <span class="text-lg font-medium">
+                                {currencySymbol}
+                            </span>
+                          <span class="font-extrabold -mr-[9px]" data-usdprice={totalPrice}>
+                            {totalPrice}
+                          </span>
+                            </span>
+                            <span class="text-md font-medium text-gray-500">
+                            /month
+                            </span>
+                        </div>
+                        {/if}
                       <div class="mt-4 flex items-center justify-center">
                         <span class="px-3 flex items-start text-6xl tracking-tight text-primary-800">
                           <span class="mt-2 mr-2 text-4xl font-medium">
                             {currencySymbol}
                           </span>
-                          <span class="font-extrabold" data-usdprice={totalPrice}>
-                            {totalPrice}
-                          </span>
+                              <span class="font-extrabold" data-usdprice={Math.floor(totalPrice * (1 - discount))}>
+                                {Math.floor(totalPrice * (1 - discount))}
+                              </span>
                         </span>
+                            <span class="text-2xl font-medium text-gray-500">
+                            /month
+                            </span>
                       </div>
                     </div>
                   </div>
@@ -154,6 +204,22 @@
 </div>
 
 <style lang="postcss">
+    .strikethrough{
+        text-align: center;
+        margin: 20px;
+        position: relative;
+    }
+    .strikethrough:before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        border-top: 3px solid rgb(255,184,6);
+        background: black;
+        width: 140px;
+        transform: translate(-50%, -50%) rotate(-10deg);
+    }
+
     a{
         z-index: 1;
         position: relative;
