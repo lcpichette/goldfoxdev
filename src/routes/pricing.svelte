@@ -4,22 +4,27 @@
     import Plans from "../components/plans.svelte";
     import ServiceRow from "../components/serviceRow.svelte";
 
-    let conversionAvailable = false;
-    let currency = "USD";
-    let currencySymbol = "$";
-    let services = [];
-    let packages = [];
-    let options;
+    let banner; // data
+    let discountBanner; // data
+    let conversionAvailable = false; // status
+    let currency = "USD"; // data
+    let currencySymbol = "$"; // component param
+    let services = []; // data
+    let packages = []; // data
+    let options; 
     let prices;
-    let paymentPlanMonths;
-    let feePerMonth;
-    let subscriptionDivisor;
-    let servicesLoaded = false;
-    let paymentPlanInfoLoaded = false;
+    let paymentPlanMonths; // component param
+    let feePerMonth; // component param
+    let subscriptionDivisor; // component param
+    let servicesLoaded = false; // status
+    let paymentPlanInfoLoaded = false; // status
+    let queryParams; // data
+    let affiliateDiscount, directDiscount; // interim variables
+    let discount; // data
+    let discountName; // data
     //
 
     let conversions = {
-        lastUpdated: "12/12/21",
         data: {
             "USD": 1, // base currency
             "ARS": undefined,
@@ -42,6 +47,7 @@
         }
     }
 
+
     onMount(() => {
         options = document.getElementById("currency").querySelectorAll("option");
         for (const [i, tag] of Object.keys(conversions.symbols).entries()) {
@@ -54,7 +60,72 @@
 
         loadServices();
         loadPaymentPlanInfo();
+
+        queryParams = new Proxy(new URLSearchParams(window.location.search), {
+          get: (searchParams, prop) => searchParams.get(prop),
+        });
+        if (queryParams.discount) {
+            checkForDiscount(queryParams.discount)
+                .then((discount) => {
+                    if (discount) {
+                        directDiscount = discount;
+                    } else {
+                        affiliateDiscount = 0;
+                    }
+                });
+        }
+        if (queryParams.affiliate) {
+            checkForAffiliate(queryParams.affiliate)
+                .then((discount) => {
+                    if (discount) {
+                        affiliateDiscount = discount;
+                    } else {
+                        affiliateDiscount = 0;
+                    }
+                });
+        }
     });
+    
+    function toggleBanner() {
+        discountBanner = false;
+        setTimeout(() => {banner.style.display = 'none'}, 600);
+    }
+
+    async function checkForDiscount(code) {
+        const DATE_SEG = new Date(new Date()).toLocaleString().split(',')[0].split('/').map((seg) => seg.padStart(2,'0'));
+        const TODAY = `${DATE_SEG[2]}-${DATE_SEG[0]}-${DATE_SEG[1]}`;
+        const query = gql`
+        query Discounts {
+          discounts(
+            where: {validUntil_gte: "${TODAY}", queryParamTitle: "${code}", active: true}
+          ) {
+            validUntil
+            percent
+          }
+        }
+        `;
+        const hygraph = new GraphQLClient('https://us-west-2.cdn.hygraph.com/content/ckx6em1th5ke501xq4z6t1q05/master', { headers: {} });
+        const res = await hygraph.request(query);
+        return res.discounts[0]?.percent || 0;
+    }
+    async function checkForAffiliate(code) {
+        const DATE_SEG = new Date(new Date()).toLocaleString().split(',')[0].split('/').map((seg) => seg.padStart(2,'0'));
+        const TODAY = `${DATE_SEG[2]}-${DATE_SEG[0]}-${DATE_SEG[1]}`;
+        const query = gql`
+        query Affiliates {
+          affiliates(
+            where: {validUntil_gte: "${TODAY}", queryParamTitle: "${code}", active: true}
+          ) {
+            validUntil
+            percent
+            kickback
+          }
+        }
+        `;
+        const hygraph = new GraphQLClient('https://us-west-2.cdn.hygraph.com/content/ckx6em1th5ke501xq4z6t1q05/master', { headers: {} });
+        const res = await hygraph.request(query);
+        return res.affiliates[0]?.percent || 0;
+    }
 
     async function loadPaymentPlanInfo() {
         const query = gql`
@@ -180,8 +251,19 @@
         if (service.per === 'Whole') {
             return priceForOne;
         }
-        return priceForOne * (service.amount || 0);
+        return Math.round(priceForOne * (service.amount || 0) * (1-discount));
     }));
+    
+    $: {
+        discountBanner = true;
+        if ((affiliateDiscount || 0) > (directDiscount || 0)) {
+            discount = affiliateDiscount;
+            discountName = queryParams?.affiliate;
+        } else {
+            discount = directDiscount;
+            discountName = queryParams?.discount;
+        }
+    }
 </script>
 
 <svetle:head>
@@ -259,6 +341,22 @@
     </div>
     {/if}
 
+    {#if discount}
+    <div class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center sm:px-6 sm:pb-5 lg:px-8 z-[999999] banner" class:fadeOut={!discountBanner} bind:this={banner}>
+      <div class="pointer-events-auto flex items-center justify-between gap-x-6 bg-primary-900 py-2.5 px-6 sm:rounded-xl sm:py-3 sm:pr-3.5 sm:pl-4">
+        <p class="text-sm leading-6 text-[#fff]">
+          <strong class="font-semibold text-secondary">{discount * 100}% Savings!</strong><svg viewBox="0 0 2 2" class="mx-2 inline h-0.5 w-0.5 fill-current" aria-hidden="true"><circle cx="1" cy="1" r="1" /></svg><span>Thanks to {discount===affiliateDiscount ? 'affiliate' : 'discount'} code <span class='text-secondary'>{discountName}</span></span>
+        </p>
+        <button type="button" class="-m-1.5 flex-none p-1.5" on:click={toggleBanner}>
+          <span class="sr-only">Dismiss</span>
+          <svg class="h-5 w-5 text-primary-200" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" />
+          </svg>
+        </button>
+      </div>
+    </div>
+    {/if}
+
     {#if paymentPlanInfoLoaded && selectedServices.length >= 1}
     <Plans currencySymbol={currencySymbol} totalPrice={totalPrice} feePerMonth={feePerMonth} paymentPlanMonths={paymentPlanMonths} subscriptionDivisor={subscriptionDivisor}/>
     {:else}
@@ -324,6 +422,14 @@
     }
     th{
         @apply font-bold;
+    }
+
+    .banner {
+        opacity: 1;
+    }
+    .fadeOut {
+        opacity: 0;
+        transition: opacity 0.6s ease-in-out;
     }
 
     .higlight {
