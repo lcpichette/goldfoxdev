@@ -2,6 +2,8 @@
     export let currencySymbol;
     export let totalPrice;
     export let subscriptionPrice;
+    export let paymentPlanMonths;
+    export let feePerMonth;
 </script>
 
 <!-- This example requires Tailwind CSS v2.0+ -->
@@ -86,8 +88,8 @@
                         <span class="mt-2 mr-2 text-4xl font-medium">
                             {currencySymbol}
                         </span>
-                        <span class="font-extrabold" data-usdprice={((totalPrice / 6) + 40).toFixed(0)}>
-                            {((totalPrice / 6) + 40).toFixed(0)}
+                        <span class="font-extrabold" data-usdprice={((totalPrice / paymentPlanMonths) + feePerMonth).toFixed(0)}>
+                            {((totalPrice / paymentPlanMonths) + feePerMonth).toFixed(0)}
                         </span>
                       </span>
                       <span class="text-2xl font-medium text-gray-500">
@@ -97,7 +99,7 @@
                   </div>
                 </div>
                 <div class="border-t-2 border-gray-100 rounded-b-lg pt-10 pb-8 px-6 bg-gray-50">
-                    <p class="text-gray-700 text-sm">It's yours forever, but with the payment split into 6 payments, and an additional $40 each month.</p>
+                    <p class="text-gray-700 text-sm">It's yours forever, but with the payment split into {paymentPlanMonths} payments, and an additional ${feePerMonth} each month.</p>
                     <div class="mt-6">
                         <div class="rounded-lg shadow-md">
                             <a href="/#contact" class="block w-full text-center rounded-lg border border-transparent bg-primary-900 px-6 py-3 text-base font-semibold text-white" aria-describedby="tier-scale">

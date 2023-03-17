@@ -9,6 +9,12 @@
     let currencySymbol = "$";
     let services = [];
     let packages = [];
+    let options;
+    let prices;
+    let paymentPlanMonths;
+    let feePerMonth;
+    let servicesLoaded = false;
+    let paymentPlanInfoLoaded = false;
     //
 
     let conversions = {
@@ -35,9 +41,6 @@
         }
     }
 
-    let options;
-    let prices;
-
     onMount(() => {
         options = document.getElementById("currency").querySelectorAll("option");
         for (const [i, tag] of Object.keys(conversions.symbols).entries()) {
@@ -49,7 +52,24 @@
         }
 
         loadServices();
-    })
+        loadPaymentPlanInfo();
+    });
+
+    async function loadPaymentPlanInfo() {
+        const query = gql`
+        query PaymentPlan {
+            paymentPlanInfos(where: {active: true}) {
+                months
+                monthlyFee
+            }
+        }
+        `;
+        const hygraph = new GraphQLClient('https://us-west-2.cdn.hygraph.com/content/ckx6em1th5ke501xq4z6t1q05/master', { headers: {} });
+        const res = await hygraph.request(query);
+        paymentPlanMonths = res.paymentPlanInfos[0].months;
+        feePerMonth = res.paymentPlanInfos[0].monthlyFee;
+        paymentPlanInfoLoaded = true;
+    }
 
     async function loadServices() {
         const query = gql`
@@ -76,7 +96,6 @@
         `;
         const hygraph = new GraphQLClient('https://us-west-2.cdn.hygraph.com/content/ckx6em1th5ke501xq4z6t1q05/master', { headers: {} });
         const res = await hygraph.request(query);
-        console.log(res.services.map((s) => s.per));
         services = res.services.map((service) => {
             return {
                 id: service.id,
@@ -93,7 +112,6 @@
                     : null,
             };
         });
-        console.log('loading bundles');
         packages = res.bundles.map((bundle) => {
             return {
                 service: bundle.title,
@@ -102,6 +120,7 @@
                 selected: false,
             };
         });
+        servicesLoaded = true;
     }
 
     async function loadPrice(tag, amount) {
@@ -127,7 +146,6 @@
 
     function updateCurrency() {
         for(const o of options){
-            console.log(o.selected);
             if(o.selected){
                 currency = o.value;
                 break;
@@ -136,7 +154,6 @@
 
         prices = document.querySelectorAll(".price");
         for(const price of prices){
-            console.log(price.dataset.usdprice);
             price.innerText = Math.round(parseFloat(price.dataset.usdprice) * conversions.data[currency]);
         }
 
@@ -198,6 +215,7 @@
         </div>
     </div>
     
+    {#if servicesLoaded}
     <div class="flex flex-col max-w-7xl mx-auto w-full mt-12">
         <div class="w-full">
             <div class="py-2 align-middle w-[90%] lg:min-w-full lg:px-8 block mx-auto">
@@ -235,9 +253,10 @@
             </div>
         </div>
     </div>
+    {/if}
 
-    {#if selectedServices.length >= 1}
-    <Plans currencySymbol={currencySymbol} totalPrice={totalPrice} subscriptionPrice={subscriptionPrice} />
+    {#if paymentPlanInfoLoaded && selectedServices.length >= 1}
+    <Plans currencySymbol={currencySymbol} totalPrice={totalPrice} subscriptionPrice={subscriptionPrice} feePerMonth={feePerMonth} paymentPlanMonths={paymentPlanMonths}/>
     {:else}
     <p class="text-primary-800 text-2xl my-32 text-center">Select Service(s) to See Payment Options</p>
     {/if}
@@ -266,7 +285,9 @@
                             </tr>
                             <tr>
                                 <td class="px-6 py-4 text-sm text-gray-500">Payment Plan</td>
-                                <td class="px-6 py-4 text-sm text-gray-500">Total expenses, divided into 6 payments (and rounded to nearest whole-dollar), each payment made to Gold Fox Dev once per month until all payments are made. Payments start when development starts. There is no APR associated to the Payment Plan, but the Payment Plan does apply an additional $40/mo, resulting in a total of $200 in additional charges. Additional $40/mo is shown in the figure for the Payment Plan pricing plan.</td>
+                                {#if paymentPlanInfoLoaded}
+                                <td class="px-6 py-4 text-sm text-gray-500">Total expenses, divided into {paymentPlanMonths} payments (and rounded to nearest whole-dollar), each payment made to Gold Fox Dev once per month until all payments are made. Payments start when development starts. There is no APR associated to the Payment Plan, but the Payment Plan does apply an additional ${feePerMonth}/mo, resulting in a total of ${feePerMonth * paymentPlanMonths} in additional charges. Additional ${feePerMonth}/mo is shown in the figure for the Payment Plan pricing plan.</td>
+                                {/if}
                             </tr>
                             <tr>
                                 <td class="px-6 py-4 text-sm text-gray-500">Subscription</td>
