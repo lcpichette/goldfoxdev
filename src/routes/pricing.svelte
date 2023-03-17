@@ -251,7 +251,9 @@
         if (service.per === 'Whole') {
             return priceForOne;
         }
-        return Math.round(priceForOne * (service.amount || 0) * (1-discount));
+        
+        const disc = Math.round(priceForOne * (service.amount || 0) * (1-(discount || 0)));
+        return disc;
     }));
     
     $: {
