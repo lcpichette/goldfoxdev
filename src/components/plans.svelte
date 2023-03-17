@@ -56,7 +56,7 @@
                             </div>
                         </div>
                         <div class="justify-between border-t-2 border-gray-100 p-6 bg-gray-50">
-                            <p class="text-gray-700 text-sm">Yours, but only when paying for the subscription. Costs reduced to 1/12 of the total, repeated payment monthly to stay subscribed.</p>
+                            <p class="text-gray-700 text-sm">Yours, but only when paying for the subscription. Costs reduced to 1/{subscriptionDivisor} of the total, repeated payment monthly to stay subscribed.</p>
                             <div class="mt-6">
                                 <div class="rounded-lg shadow-md">
                                 <a href="/#contact" class="block w-full text-center rounded-lg border border-transparent bg-white px-6 py-3 text-base font-semibold text-primary-800 hover:bg-gray-50" aria-describedby="tier-scale">
