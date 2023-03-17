@@ -13,6 +13,7 @@
     let prices;
     let paymentPlanMonths;
     let feePerMonth;
+    let subscriptionDivisor;
     let servicesLoaded = false;
     let paymentPlanInfoLoaded = false;
     //
@@ -62,12 +63,16 @@
                 months
                 monthlyFee
             }
+            subscriptionPlanInfos(where: {active: true}) {
+                divisor
+            }
         }
         `;
         const hygraph = new GraphQLClient('https://us-west-2.cdn.hygraph.com/content/ckx6em1th5ke501xq4z6t1q05/master', { headers: {} });
         const res = await hygraph.request(query);
         paymentPlanMonths = res.paymentPlanInfos[0].months;
         feePerMonth = res.paymentPlanInfos[0].monthlyFee;
+        subscriptionDivisor = res.subscriptionPlanInfos[0].divisor;
         paymentPlanInfoLoaded = true;
     }
 
@@ -177,7 +182,6 @@
         }
         return priceForOne * (service.amount || 0);
     }));
-    $: subscriptionPrice = totalPrice / 12;
 </script>
 
 <svetle:head>
@@ -256,7 +260,7 @@
     {/if}
 
     {#if paymentPlanInfoLoaded && selectedServices.length >= 1}
-    <Plans currencySymbol={currencySymbol} totalPrice={totalPrice} subscriptionPrice={subscriptionPrice} feePerMonth={feePerMonth} paymentPlanMonths={paymentPlanMonths}/>
+    <Plans currencySymbol={currencySymbol} totalPrice={totalPrice} feePerMonth={feePerMonth} paymentPlanMonths={paymentPlanMonths} subscriptionDivisor={subscriptionDivisor}/>
     {:else}
     <p class="text-primary-800 text-2xl my-32 text-center">Select Service(s) to See Payment Options</p>
     {/if}
@@ -291,7 +295,7 @@
                             </tr>
                             <tr>
                                 <td class="px-6 py-4 text-sm text-gray-500">Subscription</td>
-                                <td class="px-6 py-4 text-sm text-gray-500">Total expenses, divided by 12 (and rounded to nearest whole-dollar), each payment made to Gold Fox Dev once per month while ownership is desired. Once payments end, hosting is shut-down, and files are kept for 3 months.</td>
+                                <td class="px-6 py-4 text-sm text-gray-500">Total expenses, divided by {subscriptionDivisor} (and rounded to nearest whole-dollar), each payment made to Gold Fox Dev once per month while ownership is desired. Once payments end, <b>hosting is shut-down</b>, and files are kept for 3 months.</td>
                             </tr>
                         </tbody>
                     </table>

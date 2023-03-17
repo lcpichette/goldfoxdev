@@ -1,9 +1,11 @@
 <script>
     export let currencySymbol;
     export let totalPrice;
-    export let subscriptionPrice;
     export let paymentPlanMonths;
     export let feePerMonth;
+    export let subscriptionDivisor;
+
+    $: subscriptionPrice = totalPrice / subscriptionDivisor;
 </script>
 
 <!-- This example requires Tailwind CSS v2.0+ -->
