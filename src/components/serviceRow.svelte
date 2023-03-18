@@ -9,14 +9,20 @@
     export let selected = undefined;
     export let amount = undefined;
 
-    const displayPrice = `
-        ${price_type === 'price' ? currencySymbol : ''}
-        ${price_type === 'price' ? Math.floor(price) : price * 100}
-    `;
-    const discountedDisplayPrice = `
-        ${price_type === 'price' ? currencySymbol : ''}
-        ${price_type === 'price' ? Math.floor(price * (1 - discount)) : price * 100}
-    `;
+    let displayPrice, discountedDisplayPrice;
+    
+    function updatePrices(discount) {
+        displayPrice = `
+            ${price_type === 'price' ? currencySymbol : ''}
+            ${price_type === 'price' ? Math.floor(price) : price * 100}
+        `;
+        discountedDisplayPrice = `
+            ${price_type === 'price' ? currencySymbol : ''}
+            ${price_type === 'price' ? Math.floor(price * (1 - discount)) : price * 100}
+        `;
+    }
+    
+    $: updatePrices(discount);
 </script>
 
 <tr class="p-3 bg-white relative z-20">
