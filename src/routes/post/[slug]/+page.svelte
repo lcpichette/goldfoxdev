@@ -1,64 +1,15 @@
-<script context="module">
-	import { GraphQLClient } from 'graphql-request';
-	export async function load(ctx) {
-		const graphcms = new GraphQLClient(
-			'https://api-us-west-2.graphcms.com/v2/ckx6em1th5ke501xq4z6t1q05/master',
-			{
-				headers: {}
-			}
-		);
-		const { post } = await graphcms.request(
-			`query PostPageQuery($slug: String!) {
-				post(where: { slug: $slug }) {
-					title
-					slug
-					date
-					excerpt
-					coverImage {
-						url
-						handle
-					}
-					content {
-						text
-						raw
-						html
-					}
-					tags
-					author {
-						name
-						picture {
-							url
-						}
-					}
-				}
-			}`,
-			{
-				slug: ctx.page.params.slug
-			}
-		);
-		return {
-			props: {
-				post
-			}
-		};
-	}
-</script>
-
 <script>
 	import { onMount } from 'svelte';
 	import { page } from "$app/stores";
-	export let post;
-	//let post = null;
 	
-	/*
-	<div class="flex h-3">
-        <div class="bg-red-500"></div>
-        <div class="bg-yellow-500"></div>
-        <div class="bg-green-500"></div>
-    </div>
-	*/
+	/** @type {import('./$types').PageData} */
+	export let data;
+	let post;
 
 	onMount(()=>{
+		post = data?.props?.post || undefined;
+		if (!post) return;
+		
 		document.getElementById("post-content").innerHTML = post.content.html;
 
 		const codeblocks = document.getElementById("post-content").querySelectorAll("pre");

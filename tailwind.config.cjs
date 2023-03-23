@@ -1,8 +1,7 @@
+/** @type {import('tailwindcss').Config} */
 module.exports = {
-	purge: ['./src/components/*.svelte', './src/components/nav/*.svelte', './src/routes/*.svelte'],
-	darkMode: false, // or 'media' or 'class'
-	mode: 'jit',
-	plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography')],
+	content: ['./src/**/*.{html,js,svelte,ts}'],
+	plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography'), require("@tailwindcss/aspect-ratio")],
 	theme: {
 		extend: {
 			fontFamily: {
