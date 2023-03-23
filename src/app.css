@@ -6,6 +6,25 @@
 	scroll-behavior: smooth;
 }
 
+table * {
+	@apply max-w-full;
+}
+
+tr,
+td {
+	@apply box-border;
+}
+table {
+	@apply table;
+}
+tr {
+	@apply table-row;
+}
+td,
+th {
+	@apply table-cell;
+}
+
 .underline-fancy {
 	position: relative;
 }

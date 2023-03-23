@@ -303,8 +303,7 @@
 					Pricing
 				</h2>
 				<p class="mt-5 text-xl text-gray-400">
-					We offer subscription-based plans, and standard upfront plans. Prices assume
-					starting from scratch.
+					We offer various payment plans and cost transparency.
 				</p>
 			</div>
 			<div class="mt-10 w-full max-w-xs">
@@ -356,7 +355,10 @@
 		<div class="flex flex-col max-w-7xl mx-auto w-full mt-12">
 			<div class="w-full">
 				<div class="py-2 align-middle w-[90%] lg:min-w-full lg:px-8 block mx-auto">
-					<h2 class="text-primary-800 text-xl pb-4">Services</h2>
+					<h2 class="text-primary-800 text-2xl lg:text-xl pb-4">Services</h2>
+					<p class="mb-4 italic text-primary-400">
+						Try scrolling down to see the dynamic plans / "Payment Options"
+					</p>
 					<div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
 						<table class="divide-y divide-gray-200 border-collapse w-full">
 							<thead class="bg-gray-50">
@@ -375,13 +377,13 @@
 									</th>
 									<th
 										scope="col"
-										class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+										class="hidden lg:table-cell px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
 									>
 										Price
 									</th>
 									<th
 										scope="col"
-										class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+										class="hidden lg:table-cell px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
 									>
 										Amount
 									</th>
@@ -471,7 +473,7 @@
 	{/if}
 
 	<div class="flex flex-col max-w-7xl mx-auto w-full mt-12">
-		<div class="max-w-7xl mx-auto w-full">
+		<div class="py-2 align-middle w-[90%] max-w-7xl lg:min-w-full lg:px-8 block mx-auto">
 			<div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
 				<h2 class="text-primary-800 text-xl pb-4">Definitions</h2>
 
@@ -481,13 +483,13 @@
 							<tr>
 								<th
 									scope="col"
-									class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+									class="px-2 lg:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
 								>
 									Term
 								</th>
 								<th
 									scope="col"
-									class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+									class="px-2 lg:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
 								>
 									Definition
 								</th>
@@ -495,16 +497,17 @@
 						</thead>
 						<tbody>
 							<tr>
-								<td class="px-6 py-4 text-sm text-gray-500">Traditional</td>
-								<td class="px-6 py-4 text-sm text-gray-500"
+								<td class="px-2 lg:px-6 py-4 text-sm text-gray-500">Traditional</td>
+								<td class="px-2 lg:px-6 py-4 text-sm text-gray-500"
 									>Total expenses, half paid upfront, half paid at the completion
 									of the selected services.</td
 								>
 							</tr>
 							<tr>
-								<td class="px-6 py-4 text-sm text-gray-500">Payment Plan</td>
+								<td class="px-2 lg:px-6 py-4 text-sm text-gray-500">Payment Plan</td
+								>
 								{#if paymentPlanInfoLoaded}
-									<td class="px-6 py-4 text-sm text-gray-500"
+									<td class="px-2 lg:px-6 py-4 text-sm text-gray-500"
 										>Total expenses, divided into {paymentPlanMonths} payments (and
 										rounded to nearest whole-dollar), each payment made to Gold Fox
 										Dev once per month until all payments are made. Payments start
@@ -517,8 +520,9 @@
 								{/if}
 							</tr>
 							<tr>
-								<td class="px-6 py-4 text-sm text-gray-500">Subscription</td>
-								<td class="px-6 py-4 text-sm text-gray-500"
+								<td class="px-2 lg:px-6 py-4 text-sm text-gray-500">Subscription</td
+								>
+								<td class="px-2 lg:px-6 py-4 text-sm text-gray-500"
 									>Total expenses, divided by {subscriptionDivisor} (and rounded to
 									nearest whole-dollar), each payment made to Gold Fox Dev once per
 									month while ownership is desired. Once payments end,
@@ -530,16 +534,17 @@
 				</div>
 			</div>
 		</div>
-	</div>
 
-	<div class="flex flex-col max-w-7xl mx-auto w-full mt-12 pb-6">
-		<p class="mt-12 px-6 text-gray-700 text-base">
-			<span class="higlight">NOTE</span>: Gold Fox Dev does not pay for monthly fees accrued
-			by regular services. For example, the cost you pay for the Hosting service by Gold Fox
-			Dev is the construction of the infrastructure required in order to host your website.
-			<b>Not</b> the monthly expenses accrued by the provider. This is a standard practice among
-			website developers.
-		</p>
+		<div class="flex flex-col max-w-7xl mx-auto w-full mt-12 pb-6">
+			<p class="mt-12 px-2 lg:px-6 text-gray-700 text-base">
+				<span class="higlight">NOTE</span>: Gold Fox Dev does not pay for monthly fees
+				accrued by regular services. For example, the cost you pay for the Hosting service
+				by Gold Fox Dev is the construction of the infrastructure required in order to host
+				your website.
+				<b>Not</b> the monthly expenses accrued by the provider. This is a standard practice
+				among website developers.
+			</p>
+		</div>
 	</div>
 </div>
 
