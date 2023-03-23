@@ -83,10 +83,10 @@
 <!-- Mobile -->
 {#if selected != null}
 	<tr class="border-gray-200 border-b table-row lg:hidden w-full">
-		<td class="px-2 py-4 h-9 text-sm text-gray-500 whitespace-nowrap">
+		<td class="px-2 py-1 pb-2 h-9 text-sm text-gray-500 whitespace-nowrap">
 			<div class="flex w-full h-full items-center">
 				{#if discount}
-					<div class="flex flex-wrap">
+					<div class="flex flex-wrap gap-1">
 						<span class="price line-through" data-usdprice={price}>
 							{displayPrice}
 						</span>
@@ -116,9 +116,9 @@
 	</tr>
 {:else}
 	<tr class="border-gray-200 border-b table-row lg:hidden">
-		<td class="px-2 pt-1 align-top text-sm align text-gray-500 whitespace-nowrap">
+		<td class="px-2 py-1 pb-2 align-top text-sm align text-gray-500 whitespace-nowrap">
 			{#if discount}
-				<div class="flex flex-wrap">
+				<div class="flex flex-wrap gap-1">
 					<span class="price line-through" data-usdprice={price}>
 						{displayPrice}
 					</span>
