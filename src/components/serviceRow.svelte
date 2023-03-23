@@ -65,7 +65,7 @@
 </tr>
 {#if selected != null}
 <tr class="border-gray-200 border-b table-row lg:hidden w-full align-center justify-center inline-flex">
-    <td colspan="4">
+    <td colspan="3">
         <div class="flex justify-center">
             <input bind:checked={selected} type="checkbox" class="mb-4 focus:ring-secondary h-9 w-3/5 text-secondary border-gray-300 rounded-lg">
         </div>
@@ -73,9 +73,9 @@
 </tr>
 {:else}
 <tr class="border-gray-200 border-b table-row lg:hidden">
-    <td class="px-2 lg:px-6 py-4 text-sm text-gray-500">
-        <div class="h-5">
-            <input bind:value={amount} placeholder="0" type='text' pattern="[0-9]+" class="focus:ring-secondary active:ring-secondary h-6 w-10 px-2 py-1 border-gray-300 border rounded text-center invalid:ring-error invalid:text-error invalid:border-error invalid:text-error valid:border-gray-300 valid:text-gray-500">
+    <td colspan="3" class="px-2 py-4 text-sm text-gray-500">
+        <div class="h-5 w-full max-w-full flex justify-center items-center">
+            <input bind:value={amount} placeholder="0" type='text' pattern="[0-9]+" class="mb-4 focus:ring-secondary active:ring-secondary h-8 w-3/5 px-2 py-2 border-gray-300 border rounded text-center invalid:ring-error invalid:text-error invalid:border-error invalid:text-error valid:border-gray-300 valid:text-gray-500">
         </div>
     </td>
 </tr>

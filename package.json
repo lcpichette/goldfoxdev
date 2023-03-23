@@ -1,8 +1,9 @@
 {
-  "name": "sassesounds",
-  "version": "0.0.1",
+  "name": "goldfoxdev",
+  "version": "1.0.0",
   "scripts": {
     "dev": "svelte-kit dev",
+    "network": "npm run dev -- --host --port 3333",
     "build": "svelte-kit build",
     "package": "svelte-kit package",
     "preview": "svelte-kit preview",
@@ -28,6 +29,7 @@
     "@mapbox/rehype-prism": "^0.8.0",
     "@tailwindcss/forms": "^0.4.0",
     "@tailwindcss/typography": "^0.5.0",
+    "esbuild": "^0.17.12",
     "froalacharts": "^1.0.0",
     "front-matter": "^4.0.2",
     "glob": "^7.2.0",

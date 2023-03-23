@@ -84,7 +84,7 @@
 
     <!-- Mobile menu, show/hide based on menu state. -->
     <div style="height:1px;overflow:hidden;" class="block lg:hidden transition-all ease-in-out duration-300" id="mobile-menu">
-        <div id="mobileNavWrapper" class="relative pt-2 pb-3 space-y-1 flex lg:hidden flex-col px-8 z-10">
+        <div class="relative pt-2 pb-2 space-y-1 flex lg:hidden flex-col gap-2 px-8 z-10">
             <NavButton path="/" title="Home" />
             <!--TODO
             <NavButton path="/blog" title="Blog" />

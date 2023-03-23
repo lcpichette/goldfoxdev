@@ -163,9 +163,6 @@
                             {totalPrice}
                           </span>
                             </span>
-                            <span class="text-md font-medium text-gray-500">
-                            /month
-                            </span>
                         </div>
                         {/if}
                       <div class="mt-4 flex items-center justify-center">
@@ -177,9 +174,6 @@
                                 {Math.floor(totalPrice * (1 - discount))}
                               </span>
                         </span>
-                            <span class="text-2xl font-medium text-gray-500">
-                            /month
-                            </span>
                       </div>
                     </div>
                   </div>

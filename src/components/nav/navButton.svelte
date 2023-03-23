@@ -2,7 +2,7 @@
     import { page } from "$app/stores";
     import { onMount } from "svelte";
 
-    export let path;
+    export let path = "";
     export let section = undefined;
     export let title;
 
@@ -12,10 +12,8 @@
     if(section === undefined){section = ""}else{section="#"+section}
     let fullPath = path + section;
     if(fullPath.includes('##')){
-        console.log("!!!! ", fullPath);
         let idx = fullPath.indexOf('#');
         fullPath.slice(idx, idx+1);
-        console.log("~~~~ ", fullPath);
     }
 
     onMount(()=>{
@@ -26,6 +24,7 @@
         navUpdate();
     });
 
+    
     const navUpdate = (ev) => {
         if(mounted){
             if(window.location.href){
@@ -82,15 +81,9 @@
 
 <svelte:window on:hashchange={navUpdate} on:popstate={navUpdate} />
 
-<a id={"nav-"+title+randomNum} href={fullPath} class="relative inactive active z-20">{title}</a>
+<a id={"nav-"+title+randomNum} href={fullPath} class="relative inactive active z-20 px-3 py-5 rounded-md text-sm">{title}</a>
 
 <style lang="postcss">
-    .active{
-        @apply text-white px-3 py-2 rounded-md text-sm font-bold pointer-events-none;
-    }
-    .inactive {
-        @apply text-gray-300 px-3 py-2 rounded-md text-sm font-normal;
-    }
     a{
         z-index: 1;
         position: relative;
@@ -99,39 +92,29 @@
         padding: 0.5em 1em;
         outline: none;
         border: none;
+        @apply text-white;
 
         overflow: hidden;
-        transition: color 0.45s ease-in-out;
+        transition-property: color, background-color;
+        transition-duration: 0.45s;
+        transition-timing-function: ease-in-out;
         max-width: 250px;
+        
+        cursor: pointer;
+    }
+    a.active{
+        @apply text-white font-bold pointer-events-none;
+    }
+    a.inactive {
+        @apply text-gray-300 font-normal;
     }
     @media (max-width: 500px){
         a{
             max-width:100%;
         }
     }
-
-    a::before{
-        content: '';
-        z-index: -1;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 1em;
-        height: 1em;
-        border-radius: 50%;
-        
-        @apply bg-white;
-        transform-origin: center;
-        transform: translate3d(-50%, -50%, 0) scale3d(0, 0, 0);
-        transition: transform 0.45s ease-in-out;
-    }
-
-    a:hover{
-        cursor: pointer;
-        color: #161616;
-    }
-
-    a:hover::before {
-        transform: translate3d(-50%, -50%, 0) scale3d(25, 25, 25);
+    a:hover {
+        color: #fff;
+        background-color: theme('colors.primary.800');
     }
 </style>
