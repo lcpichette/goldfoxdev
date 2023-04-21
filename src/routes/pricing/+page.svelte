@@ -1,28 +1,23 @@
 <script>
 	import { onMount } from 'svelte';
 	import { gql, GraphQLClient } from 'graphql-request';
-	import Plans from '$lib/components/plans.svelte';
-	import ServiceRow from '$lib/components/serviceRow.svelte';
 
 	let banner; // data
 	let discountBanner; // data
-	let conversionAvailable = false; // status
 	let currency = 'USD'; // data
 	let currencySymbol = '$'; // component param
-	let services = []; // data
-	let packages = []; // data
 	let options;
 	let prices;
 	let paymentPlanMonths; // component param
 	let feePerMonth; // component param
 	let subscriptionDivisor; // component param
 	let servicesLoaded = false; // status
-	let paymentPlanInfoLoaded = false; // status
 	let queryParams; // data
 	let affiliateDiscount, directDiscount; // interim variables
 	let discount; // data
 	let discountName; // data
 	let totalPrice = undefined;
+	let rate = 0; // data
 	//
 
 	let conversions = {
@@ -49,7 +44,6 @@
 	};
 
 	onMount(() => {
-		options = document.getElementById('currency').querySelectorAll('option');
 		for (const [i, tag] of Object.keys(conversions.symbols).entries()) {
 			loadPrice(tag, 1)
 				.then((conversionData) => {
@@ -58,8 +52,7 @@
 				.catch((err) => console.error(err));
 		}
 
-		loadServices();
-		loadPaymentPlanInfo();
+		loadRate();
 
 		queryParams = new Proxy(new URLSearchParams(window.location.search), {
 			get: (searchParams, prop) => searchParams.get(prop)
@@ -141,15 +134,11 @@
 		return res.affiliates[0]?.percent || 0;
 	}
 
-	async function loadPaymentPlanInfo() {
+	async function loadRate() {
 		const query = gql`
-			query PaymentPlan {
-				paymentPlanInfos(where: { active: true }) {
-					months
-					monthlyFee
-				}
-				subscriptionPlanInfos(where: { active: true }) {
-					divisor
+			query Rates {
+				rates {
+					hourly
 				}
 			}
 		`;
@@ -158,61 +147,7 @@
 			{ headers: {} }
 		);
 		const res = await hygraph.request(query);
-		paymentPlanMonths = res.paymentPlanInfos[0].months;
-		feePerMonth = res.paymentPlanInfos[0].monthlyFee;
-		subscriptionDivisor = res.subscriptionPlanInfos[0].divisor;
-		paymentPlanInfoLoaded = true;
-	}
-
-	async function loadServices() {
-		const query = gql`
-			query Prices {
-				bundles(where: { active: true }) {
-					services {
-						id
-					}
-					title
-					seasonalPriceRange
-					discount
-					description
-				}
-				services(where: { active: true }, orderBy: order_ASC) {
-					per
-					price
-					seasonalPriceRange
-					title
-					order
-					id
-					description
-				}
-			}
-		`;
-		const hygraph = new GraphQLClient(
-			'https://us-west-2.cdn.hygraph.com/content/ckx6em1th5ke501xq4z6t1q05/master',
-			{ headers: {} }
-		);
-		const res = await hygraph.request(query);
-		services = res.services.map((service) => {
-			return {
-				id: service.id,
-				per: service.per,
-				service: service.title,
-				description: service.description,
-				price: service.price,
-				order: service.order,
-				selected: service.per === 'Whole' ? false : null,
-				amount: service.per !== 'Whole' ? undefined : null
-			};
-		});
-		packages = res.bundles.map((bundle) => {
-			return {
-				service: bundle.title,
-				description: bundle.description,
-				discount: bundle.discount,
-				selected: false
-			};
-		});
-		servicesLoaded = true;
+		rate = res.rates[0].hourly;
 	}
 
 	async function loadPrice(tag, amount) {
@@ -253,27 +188,6 @@
 
 		currencySymbol = conversions.symbols[currency];
 	}
-
-	$: selectedServices = services.filter((service) => {
-		if (
-			(service.per === 'Whole' && service.selected) ||
-			(service.per !== 'Whole' && service.amount)
-		) {
-			return service;
-		}
-	});
-	const sum = (arr) => arr.reduce((a, b) => a + b, 0);
-	$: totalPrice = sum(
-		selectedServices.map((service) => {
-			const priceForOne = parseFloat(service.price) * conversions.data[currency];
-			if (service.per === 'Whole') {
-				return priceForOne;
-			}
-
-			const disc = Math.round(priceForOne * (service.amount || 0) * (1 - (discount || 0)));
-			return disc;
-		})
-	);
 
 	$: {
 		discountBanner = true;
@@ -351,7 +265,7 @@
 		</div>
 	</div>
 
-	{#if servicesLoaded}
+	{#if rate}
 		<div class="flex flex-col max-w-7xl mx-auto w-full mt-0">
 			<div class="w-full">
 				<div class="bg-white py-16 sm:py-24">
@@ -462,8 +376,21 @@
 										<p class="mt-6 flex items-baseline justify-center gap-x-2">
 											<span
 												class="text-5xl font-bold tracking-tight text-slate-700"
-												>$50</span
 											>
+												{#if discount}
+													<s class="text-3xl text-slate-500 pr-1"
+														>{rate}</s
+													>
+													<span class="highlight"
+														>{currencySymbol}<span class="price"
+															>{(1 - discount) * rate}</span
+														></span
+													>
+												{:else}
+													<span class="price">{currencySymbol}{rate}</span
+													>
+												{/if}
+											</span>
 											<span
 												class="text-sm font-semibold leading-6 tracking-wide text-gray-600"
 												>USD</span
@@ -524,98 +451,6 @@
 			</div>
 		</div>
 	{/if}
-
-	<!--
-	{#if paymentPlanInfoLoaded && selectedServices.length >= 1}
-		<Plans
-			{discount}
-			{currencySymbol}
-			{totalPrice}
-			{feePerMonth}
-			{paymentPlanMonths}
-			{subscriptionDivisor}
-		/>
-	{:else}
-		<p class="text-primary-800 text-2xl my-32 text-center">
-			Select Service(s) to See Payment Options
-		</p>
-	{/if}
-
-	<div class="flex flex-col max-w-7xl mx-auto w-full mt-12">
-		<div class="py-2 align-middle w-[90%] max-w-7xl lg:min-w-full lg:px-8 block mx-auto">
-			<div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-				<h2 class="text-primary-800 text-xl pb-4">Definitions</h2>
-
-				<div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-					<table class="min-w-full divide-y divide-gray-200">
-						<thead class="bg-gray-50">
-							<tr>
-								<th
-									scope="col"
-									class="px-2 lg:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-								>
-									Term
-								</th>
-								<th
-									scope="col"
-									class="px-2 lg:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-								>
-									Definition
-								</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td class="px-2 lg:px-6 py-4 text-sm text-gray-500">Traditional</td>
-								<td class="px-2 lg:px-6 py-4 text-sm text-gray-500"
-									>Total expenses, half paid upfront, half paid at the completion
-									of the selected services.</td
-								>
-							</tr>
-							<tr>
-								<td class="px-2 lg:px-6 py-4 text-sm text-gray-500">Payment Plan</td
-								>
-								{#if paymentPlanInfoLoaded}
-									<td class="px-2 lg:px-6 py-4 text-sm text-gray-500"
-										>Total expenses, divided into {paymentPlanMonths} payments (and
-										rounded to nearest whole-dollar), each payment made to Gold Fox
-										Dev once per month until all payments are made. Payments start
-										when development starts. There is no APR associated to the Payment
-										Plan, but the Payment Plan does apply an additional ${feePerMonth}/mo,
-										resulting in a total of ${feePerMonth * paymentPlanMonths} in
-										additional charges. Additional ${feePerMonth}/mo is shown in
-										the figure for the Payment Plan pricing plan.</td
-									>
-								{/if}
-							</tr>
-							<tr>
-								<td class="px-2 lg:px-6 py-4 text-sm text-gray-500">Subscription</td
-								>
-								<td class="px-2 lg:px-6 py-4 text-sm text-gray-500"
-									>Total expenses, divided by {subscriptionDivisor} (and rounded to
-									nearest whole-dollar), each payment made to Gold Fox Dev once per
-									month while ownership is desired. Once payments end,
-									<b>hosting is shut-down</b>, and files are kept for 3 months.</td
-								>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-			</div>
-		</div>
-
-		<div class="flex flex-col max-w-7xl mx-auto w-full mt-12 pb-6">
-			<p class="mt-12 px-2 lg:px-6 text-gray-700 text-base">
-				<span class="higlight">NOTE</span>: Gold Fox Dev does not pay for monthly fees
-				accrued by regular services. For example, the cost you pay for the Hosting service
-				by Gold Fox Dev is the construction of the infrastructure required in order to host
-				your website.
-				<b>Not</b> the monthly expenses accrued by the provider. This is a standard practice
-				among website developers.
-			</p>
-		</div>
-	</div>
-	-->
 </div>
 
 <style lang="postcss">
