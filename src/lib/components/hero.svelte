@@ -4,7 +4,8 @@
 <!-- Should visually and verbally describe (and sell) what we do. -->
 <div id='hero' class='shadow-md shadow-gray-300/50 border w-full relative z-20'>
     <div class='max-w-7xl mx-auto px-4'>
-        <div class='pt-8 lg:pt-0 h-[calc(20vh+180px)] lg:h-[65vh] flex flex-col lg:flex-row lg:justify-between'>
+        <div
+            class='pt-8 lg:pt-0 h-[calc(20vh+180px)] lg:h-[65vh] flex flex-col lg:flex-row lg:justify-center lg:gap-x-8'>
             <!-- Quote and Call-to-Action -->
             <div class='w-full lg:w-1/2 self-center flex justify-center'>
                 <!-- CHANGE TO: Eliminating Technical Barriers 
@@ -24,30 +25,15 @@
             </div>
 
             <!-- Mocks to the right -->
-            <div class='hidden lg:flex w-1/2 self-center justify-center'>
-                <div class='flex flex-col'>
-                    <picture>
-                        <img src='/img/sasse-scene.png' alt='Hi-Fi Mock' />
+            <div class='hidden lg:flex w-1/3 self-center justify-center'>
+                <div class='flex flex-col items-center'>
+                    <picture class='max-w-full w-full object-fit'>
+                        <img
+                            src='https://goldfoxdev-artifacts.s3.us-west-2.amazonaws.com/topographic-map.jpg'
+                            alt='Topographic Map' />
                     </picture>
-
-                    <div class='h-auto flex justify-around'>
-                        <!--
-                        <span>
-                            <span class="underline-fancy">
-                                <a href="https://dribbble.com/goldfoxdev" target="_blank">UI/UX Portfolio</a>
-                            </span>
-                            &nbsp;→
-                        </span>
-                    -->
-                        <!--
-                        <span>
-                            <span class="underline-fancy">
-                                <a href="/qualifications">Qualifications</a>
-                            </span>
-                            &nbsp;→
-                        </span>
-                        -->
-                    </div>
+                    <span
+                        class='text-gray-700 text-sm'>Ready and able to tackle any technological landscapes</span>
                 </div>
             </div>
         </div>

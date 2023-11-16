@@ -101,7 +101,7 @@
                     <div class='hidden lg:flex place-items-center'>
                         <img
                             class='h-8 w-auto text-white'
-                            src='https://www.goldfoxdev.com/img/Gold-Fox-Dev-Logo-White-Transparent.webp'
+                            src='https://goldfoxdev-artifacts.s3.us-west-2.amazonaws.com/Gold-Fox-Dev-Logo-White-Transparent.webp'
                             alt='Gold Fox Dev'
                         />
                     </div>
