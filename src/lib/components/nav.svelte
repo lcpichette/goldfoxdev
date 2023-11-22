@@ -133,7 +133,7 @@
 									window.onload = function () {
 										Calendly.initBadgeWidget({
 											url: 'https://calendly.com/goldfoxdev/consultation-meeting',
-											text: "Let's Get Started",
+											text: "Let's Connect",
 											color: '#ffb806',
 											textColor: '#272b38',
 											branding: false

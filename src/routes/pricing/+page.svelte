@@ -211,15 +211,19 @@
 		<div
 			class="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8 lg:flex lg:justify-between"
 		>
-			<div class="max-w-xl">
+			<div class="max-w-2xl">
 				<h2
 					class="text-4xl font-extrabold text-white sm:text-5xl sm:tracking-tight lg:text-6xl"
 				>
 					Pricing
 				</h2>
 				<p class="mt-5 text-xl text-gray-400">
-					We like to keep things simple, and bill a flat-rate by the hour, with eligible
-					discounts.
+					You're only billed by the hours our engineers work. Product Management and
+					Quality Assurance are baked-in to the hourly rate we charge for our engineering
+					superstars. <a
+						class="underline text-gray-500 hover:text-gray-400"
+						href="/#contact">More info</a
+					>
 				</p>
 			</div>
 			<!--
@@ -380,7 +384,7 @@
 												clip-rule="evenodd"
 											/>
 										</svg>
-										Product Management
+										Free Product Management
 									</li>
 									<li class="flex gap-x-3">
 										<svg
