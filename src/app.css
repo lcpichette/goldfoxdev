@@ -116,3 +116,9 @@ a.button:active {
 	background-color: #ffb806;
 	color: #272b38;
 }
+
+.sup {
+	position: relative;
+	bottom: 0.6ex; 
+	font-size: 80%;
+}

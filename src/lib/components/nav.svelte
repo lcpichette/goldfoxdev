@@ -33,9 +33,7 @@
 
 <!-- This example requires Tailwind CSS v2.0+ -->
 <div class="h-[4.5rem]" />
-<nav
-	class="bg-gradient-to-r from-primary-950/[1] via-primary-950/[0.9] to-secondary/[0.2] backdrop-blur-sm fixed top-0 w-full z-50 shadow-primary-900/50"
->
+<nav class="gradient-nav backdrop-blur-sm fixed top-0 w-full z-50 shadow-primary-900/50">
 	<div class="relative overflow-clip">
 		<div class="max-w-7xl mx-auto px-8">
 			<div class="relative flex items-center justify-between h-[4.5rem]">
@@ -43,10 +41,17 @@
 				<div class="absolute inset-y-0 left-0 flex items-center sm:hidden w-full">
 					<div class="flex relative justify-between place-items-center w-full">
 						<!-- Mobile menu button-->
+						<div class="relative">
+							<img
+								class="h-6 w-6"
+								src="/img/Gold-Fox-Dev-Icon-Transparent.webp"
+								alt="Gold Fox Dev Icon"
+							/>
+						</div>
 						<button
 							on:click={() => navOpen.update((n) => !n)}
 							type="button"
-							class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+							class="inline-flex items-center justify-center p-2 rounded-md text-primary-600 hover:text-primary-800 hover:bg-gray-300/30 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-800"
 							aria-controls="mobile-menu"
 							aria-expanded="false"
 						>
@@ -88,13 +93,6 @@
 								</svg>
 							{/if}
 						</button>
-						<div class="relative">
-							<img
-								class="h-6 w-6"
-								src="/img/Gold-Fox-Dev-Icon-Transparent.webp"
-								alt="Gold Fox Dev Icon"
-							/>
-						</div>
 					</div>
 				</div>
 
@@ -158,9 +156,30 @@
 				<!--TODO
 			<NavButton path="/blog" title="Blog" />
 			-->
-				<NavButton path="/testimonials" title="Testimonials" />
-				<NavButton path="/" section="contact" title="Contact" />
+				<NavButton path="/pricing" title="Pricing" />
+				<NavButton path="/" section="contact" title="Learn More" />
 			</div>
 		</div>
 	</div>
 </nav>
+
+<style>
+	.gradient-nav {
+		background: linear-gradient(
+			to right,
+			rgba(31, 34, 48, 1) 15%,
+			rgba(31, 34, 48, 0.95) 30%,
+			rgba(31, 34, 48, 0.65) 65%,
+			rgba(255, 184, 6, 0.2)
+		);
+		@media screen and (min-width: 800px) {
+			background: linear-gradient(
+				to right,
+				rgba(31, 34, 48, 1) 15%,
+				rgba(31, 34, 48, 0.85) 60%,
+				rgba(31, 34, 48, 0.65) 80%,
+				rgba(255, 184, 6, 0.2)
+			);
+		}
+	}
+</style>

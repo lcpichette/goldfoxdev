@@ -145,6 +145,6 @@
 	}
 	a:hover {
 		color: #fff;
-		background-color: theme('colors.primary.800');
+		background-color: rgba(110, 118, 152, 0.2);
 	}
 </style>

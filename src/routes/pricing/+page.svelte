@@ -436,7 +436,7 @@
 										</p>
 										<a
 											href="/#contact"
-											class="button w-44 flex justify-center mt-8 font-bold rounded-md text-white bg-primary-900"
+											class="button w-44 flex justify-center mt-8 mx-auto font-bold rounded-md text-white bg-primary-900"
 										>
 											<span>Learn More</span>
 										</a>
