@@ -42,20 +42,19 @@
 							information we need during any meetings with your liason, preventing
 							interruptions in development and in your workflow.
 						</li>
-						<li>
-							Make your CFO happy by saving approximately $185k per-year for
-							engineering teams of 5.
-						</li>
+						<li>Make your CFO happy by drastically reducing your IT budget.</li>
 						<li>
 							Free up hours that would've otherwise been spent managing, directly or
 							indirectly, engineering staff.
 						</li>
 					</ul>
 
-					<h3 class="text-primary-800">We’re here to help</h3>
+					<h3 class="text-primary-800">You're always in control</h3>
 					<p>
-						From idea to launch, we work quickly, provide high-quality results, all at
-						an affordable rate.
+						You'll find that working with Gold Fox Dev is almost liberating. You're
+						always in control, but how involved you are is entirely up to you. With
+						elite talent and updates at a frequency you set, you'll be able to focus on
+						what's important.
 					</p>
 				</div>
 			</div>
