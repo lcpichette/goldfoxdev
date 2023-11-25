@@ -16,7 +16,7 @@
 			// If we're opening it (originally closed)
 			if (mobileOpen) {
 				mm.style.overflow = 'none';
-				mm.style.height = '180px';
+				mm.style.height = '220px';
 			} else {
 				// If we're closing it (originally open)
 				mm.style.overflow = 'hidden';
@@ -116,7 +116,8 @@
 						<NavButton path="/blog" title="Blog" />
 						-->
 							<NavButton path="/pricing" title="Pricing" />
-							<NavButton path="/" section="contact" title="Learn More" />
+							<NavButton path="/" section="about" title="Learn More" />
+							<NavButton path="/" section="contact" title="Contact Us" />
 							<div>
 								<link
 									href="https://assets.calendly.com/assets/external/widget.css"
@@ -157,7 +158,8 @@
 			<NavButton path="/blog" title="Blog" />
 			-->
 				<NavButton path="/pricing" title="Pricing" />
-				<NavButton path="/" section="contact" title="Learn More" />
+				<NavButton path="/" section="about" title="Learn More" />
+				<NavButton path="/" section="contact" title="Contact Us" />
 			</div>
 		</div>
 	</div>
