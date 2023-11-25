@@ -40,9 +40,6 @@
 						>
 						of a full stack engineer</span
 					>
-					<h2 class="text-2xl text-gray-700 mt-4 inline-block lg:hidden">
-						Website Development
-					</h2>
 					<a
 						href="/#contact"
 						class="button w-44 flex justify-center mt-8 font-bold rounded-md text-white bg-primary-900"

@@ -93,80 +93,27 @@
 						fill="url(#bedc54bc-7371-44a2-a2bc-dc68d819ae60)"
 					/>
 				</svg>
-				<blockquote class="relative bg-white rounded-lg shadow-lg">
-					<div class="rounded-t-lg px-6 py-24">
+				<blockquote
+					class="relative bg-white rounded-lg shadow-lg w-full md:w-[440px] xl:w-[600px]"
+				>
+					<div class="rounded-t-lg py-6 lg:py-10">
 						<!-- Title -->
 						<div class="flex justify-start items-center flex-col lg:flex-row">
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								class="h-6 w-6"
-								fill="none"
-								viewBox="0 0 24 24"
-								stroke="currentColor"
-							>
-								<path
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									stroke-width="2"
-									d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
-								/>
-							</svg>
-							<h3
-								class="block lg:inline pl-4 pb-1 text-xl leading-8 font-semibold tracking-tight text-primary-800"
-							>
-								Meet the Founder
-							</h3>
-							<h4 class="block lg:inline italic text-gray-600">... and the cat?</h4>
-						</div>
-
-						<!-- Quote -->
-						<div class="relative text-lg text-gray-700 font-medium mt-8">
-							<svg
-								class="absolute top-0 left-0 transform -translate-x-3 -translate-y-2 h-8 w-8 text-gray-200"
-								fill="currentColor"
-								viewBox="0 0 32 32"
-								aria-hidden="true"
-							>
-								<path
-									d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z"
-								/>
-							</svg>
-							<p class="relative">
-								Cat-dad and technology enthusiast, I organize incredible talent to
-								help businesses break through technological barriers and grow.
-							</p>
-						</div>
-
-						<!-- Keanu -->
-						<div class="rounded-full right-10 mt-6 absolute flex">
-							<span class="place-self-center pr-4 text-primary-800 font-semibold"
-								>Keanu</span
-							>
-							<img
-								class="w-12 h-12 border border-transparent rounded-full bg-secondary"
-								src="/img/keanu_headshot.jpg"
-								alt=""
+							<iframe
+								class="w-full px-3 lg:px-5 min-h-[200px] md:min-h-[300px] xl:min-h-[380px]"
+								src="https://pitch.com/embed-link/awjfna"
+								allow="fullscreen"
+								allowfullscreen=""
+								style="border:0"
 							/>
 						</div>
 					</div>
 					<cite
-						class="relative flex items-center sm:items-start bg-secondary rounded-b-lg not-italic py-5 px-6"
+						class="relative flex items-center sm:items-start bg-secondary rounded-b-lg not-italic py-2 px-6"
 					>
-						<div class="relative rounded-full border-2 border-white">
-							<img
-								class="w-12 h-12 rounded-full bg-secondary"
-								src="/img/headshot.jpg"
-								alt=""
-							/>
-						</div>
 						<span
 							class="relative flex flex-col text-left ml-6 text-secondary font-semibold"
-						>
-							<p class="text-gray-800 font-semibold text-base inline">
-								Lucas Pichette
-							</p>
-							<p class="text-gray-600 font-normal">Founder of Gold Fox Dev</p>
-						</span>
+						/>
 					</cite>
 				</blockquote>
 			</div>

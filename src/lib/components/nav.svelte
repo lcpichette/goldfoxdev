@@ -51,7 +51,7 @@
 						<button
 							on:click={() => navOpen.update((n) => !n)}
 							type="button"
-							class="inline-flex items-center justify-center p-2 rounded-md text-primary-600 hover:text-primary-800 hover:bg-gray-300/30 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-800"
+							class="inline-flex items-center justify-center p-2 rounded-md text-primary-800 hover:text-primary-950 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-800"
 							aria-controls="mobile-menu"
 							aria-expanded="false"
 						>
