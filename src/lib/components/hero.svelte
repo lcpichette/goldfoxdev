@@ -14,31 +14,32 @@
                 -->
 				<div class="flex flex-col">
 					<h1
-						class="text-4xl lg:text-5xl mt-8 lg:mt-0 font-extrabold text-primary-800 tracking-tight"
+						class="text-4xl md:text-5xl mt-8 lg:mt-0 font-extrabold text-primary-800 tracking-tight"
 					>
 						Scalable Contract Engineering Team
 					</h1>
-					<h2 class="text-2xl text-gray-700 mt-2 hidden lg:inline-block">
-						Top 1% of software engineers, with savings of approximately $37k<span
-							class="sup">*</span
+					<h2 class="text-2xl text-gray-700 mt-2 hidden md:inline-block">
+						Top 1% of software engineers, with savings of approximately $59k<span
+							class="sup">1,2</span
 						>
 						per-engineer per-year
 					</h2>
-					<span class="text-gray-500 text-xs"
-						>*Based on the <a
+					<span class="text-gray-500 text-[0.6rem] hidden md:block"
+						>1: Based on the <a
 							class="underline"
 							href="https://www.ziprecruiter.com/Salaries/FULL-Stack-Software-Engineer-Salary"
 							target="_blank"
 							rel="noreferrer noopener">average salary</a
-						>
-						and
-						<a
+						> of a full stack engineer, figure acquired Nov. 2023</span
+					>
+					<span class="text-gray-500 text-[0.6rem] hidden md:block"
+						>2: Based on the average <a
 							class="underline"
 							href="https://www.bls.gov/news.release/pdf/ecec.pdf"
 							target="_blank"
 							rel="noreferrer noopener">benefits</a
-						>
-						of a full stack engineer</span
+						> of a full stack engineer, Table 4 &gt; Information Industry &gt; Professional
+						and related occupations</span
 					>
 					<a
 						href="/#about"

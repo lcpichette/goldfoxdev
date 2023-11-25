@@ -34,7 +34,7 @@
 				<div class="prose prose-indigo text-gray-500 mx-auto lg:max-w-none pb-20 md:pb-0">
 					<p>
 						You're making something special -- but the journey can be complex and
-						eventful -- we're here to help save costs and simplify things.
+						expensive -- we're here to help save costs and simplify things.
 					</p>
 					<ul role="list">
 						<li>
@@ -94,13 +94,13 @@
 					/>
 				</svg>
 				<blockquote
-					class="relative bg-white rounded-lg shadow-lg w-full md:w-[440px] xl:w-[600px]"
+					class="relative bg-white rounded-lg shadow-lg w-full lg:w-[500px] xl:w-[600px]"
 				>
 					<div class="rounded-t-lg py-6 lg:py-10">
 						<!-- Title -->
 						<div class="flex justify-start items-center flex-col lg:flex-row">
 							<iframe
-								class="w-full px-3 lg:px-5 min-h-[200px] md:min-h-[300px] xl:min-h-[380px]"
+								class="w-full px-3 lg:px-5 min-h-[200px] md:min-h-[380px]"
 								src="https://pitch.com/embed-link/awjfna"
 								allow="fullscreen"
 								allowfullscreen=""

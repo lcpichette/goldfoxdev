@@ -38,7 +38,7 @@
 		<div class="max-w-7xl mx-auto px-8">
 			<div class="relative flex items-center justify-between h-[4.5rem]">
 				<!-- Mobile -->
-				<div class="absolute inset-y-0 left-0 flex items-center sm:hidden w-full">
+				<div class="absolute inset-y-0 left-0 items-center flex md:hidden w-full">
 					<div class="flex relative justify-between place-items-center w-full">
 						<!-- Mobile menu button-->
 						<div class="relative">
@@ -98,9 +98,16 @@
 
 				<!-- Desktop -->
 				<div
-					class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start"
+					class="flex-1 flex items-center justify-center md:items-stretch md:justify-start"
 				>
 					<div class="flex-shrink-0 flex items-center">
+						<div class="hidden md:flex place-items-center">
+							<img
+								class="h-8 w-auto text-white"
+								src="https://goldfoxdev-artifacts.s3.us-west-2.amazonaws.com/Gold-Fox-Dev-Icon-Transparent.webp"
+								alt="Gold Fox Dev"
+							/>
+						</div>
 						<div class="hidden lg:flex place-items-center">
 							<img
 								class="h-8 w-auto text-white"
@@ -109,7 +116,7 @@
 							/>
 						</div>
 					</div>
-					<div class="hidden lg:block sm:ml-6">
+					<div class="hidden md:block sm:ml-6">
 						<div class="flex space-x-4">
 							<NavButton path="/" title="Home" />
 							<!--TODO
@@ -149,10 +156,10 @@
 		<!-- Mobile menu, show/hide based on menu state. -->
 		<div
 			style="height:1px;overflow:hidden;"
-			class="block lg:hidden transition-all ease-in-out duration-300"
+			class="block md:hidden transition-all ease-in-out duration-300"
 			id="mobile-menu"
 		>
-			<div class="relative pt-2 pb-2 space-y-1 flex lg:hidden flex-col gap-2 px-8 z-10">
+			<div class="relative pt-2 pb-2 space-y-1 flex md:hidden flex-col gap-2 px-8 z-10">
 				<NavButton path="/" title="Home" />
 				<!--TODO
 			<NavButton path="/blog" title="Blog" />
