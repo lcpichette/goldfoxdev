@@ -272,7 +272,7 @@
 		</div>
 	</div>
 
-	{#if !rate}
+	{#if rate}
 		<div class="flex flex-col max-w-7xl mx-auto w-full mt-0">
 			<div class="w-full">
 				<div class="bg-white py-16 sm:py-24">
