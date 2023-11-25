@@ -41,7 +41,7 @@
 						of a full stack engineer</span
 					>
 					<a
-						href="/#contact"
+						href="/#about"
 						class="button w-44 flex justify-center mt-8 font-bold rounded-md text-white bg-primary-900"
 					>
 						<span>Learn More</span>
