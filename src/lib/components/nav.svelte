@@ -101,7 +101,7 @@
 					class="flex-1 flex items-center justify-center md:items-stretch md:justify-start"
 				>
 					<div class="flex-shrink-0 flex items-center">
-						<div class="hidden md:flex place-items-center">
+						<div class="hidden md:flex lg:hidden place-items-center">
 							<img
 								class="h-8 w-auto text-white"
 								src="https://goldfoxdev-artifacts.s3.us-west-2.amazonaws.com/Gold-Fox-Dev-Icon-Transparent.webp"
