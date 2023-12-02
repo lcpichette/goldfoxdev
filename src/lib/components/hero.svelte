@@ -19,9 +19,7 @@
 						Scalable Contract Engineering Team
 					</h1>
 					<h2 class="text-2xl text-gray-700 mt-2 hidden md:inline-block">
-						Top 1% of software engineers, with savings of approximately $59k<span
-							class="sup">1,2</span
-						>
+						Reduce your IT budget by approximately $59k<span class="sup">1,2</span>
 						per-engineer per-year
 					</h2>
 					<span class="text-gray-500 text-[0.6rem] hidden md:block"

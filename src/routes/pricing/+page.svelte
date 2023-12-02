@@ -324,7 +324,7 @@
 												clip-rule="evenodd"
 											/>
 										</svg>
-										Top 1% of Engineers
+										Top Talent
 									</li>
 									<li class="flex gap-x-3">
 										<svg
