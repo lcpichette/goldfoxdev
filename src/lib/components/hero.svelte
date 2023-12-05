@@ -16,7 +16,7 @@
 					<h1
 						class="text-4xl md:text-5xl mt-8 lg:mt-0 font-extrabold text-primary-800 tracking-tight"
 					>
-						Scalable Contract Engineering Team
+						Scalable Software Engineering Team
 					</h1>
 					<h2 class="text-2xl text-gray-700 mt-2 hidden md:inline-block">
 						Reduce your IT budget by approximately $59k<span class="sup">1,2</span>

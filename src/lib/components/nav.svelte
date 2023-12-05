@@ -122,7 +122,14 @@
 							<!--TODO
 						<NavButton path="/blog" title="Blog" />
 						-->
+							<!--
 							<NavButton path="/pricing" title="Pricing" />
+							-->
+							<NavButton
+								path="https://portal.goldfoxdev.com"
+								section=""
+								title="Client Portal"
+							/>
 							<NavButton path="/" section="about" title="Learn More" />
 							<NavButton path="/" section="contact" title="Contact Us" />
 							<div>
@@ -164,7 +171,10 @@
 				<!--TODO
 			<NavButton path="/blog" title="Blog" />
 			-->
+				<!--
 				<NavButton path="/pricing" title="Pricing" />
+				-->
+				<NavButton path="https://portal.goldfoxdev.com" section="" title="Client Portal" />
 				<NavButton path="/" section="about" title="Learn More" />
 				<NavButton path="/" section="contact" title="Contact Us" />
 			</div>
