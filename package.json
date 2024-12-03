@@ -1,0 +1,14 @@
+{
+    "name": "goldfoxdev",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "dev": "concurrently \"yarn workspace frontend dev\" \"yarn workspace backend develop\"",
+        "build": "yarn workspace frontend build && yarn workspace backend build",
+        "start": "concurrently \"yarn workspace frontend start\" \"yarn workspace backend start\""
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC"
+}
