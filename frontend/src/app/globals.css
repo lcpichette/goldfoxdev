@@ -1,17 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600&family=Roboto:wght@400;500&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600&family=Roboto:wght@400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&family=Space+Grotesk:wght@300..700&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-
-body {
-    font-family: 'Roboto', sans-serif;
+    font-family: "Source Sans 3", sans-serif;
 }
 
 h1,
@@ -20,14 +16,30 @@ h3,
 h4,
 h5,
 h6,
-a {
-    font-family: 'JetBrains Mono', sans-serif;
+a,
+ul>li,
+.font-title {
+    /* font-family: "Outfit", sans-serif; */
+    font-family: "Space Grotesk", sans-serif;
 }
 
+.font-code {
+    font-family: "Jetbrains Mono", sans-serif;
+}
+
+ul.list-asterisk {
+    list-style: none;
+    padding: 0px;
+}
+
+ul.list-asterisk li:before {
+    content: "*";
+    margin: 0 0.66em;
+}
 
 @layer base {
     :root {
-        --background: 0 0% 96%;
+        --background: 0 0% 99%;
         /* Light Neutral Gray */
         --foreground: 0 0% 13%;
         /* Charcoal Gray */
